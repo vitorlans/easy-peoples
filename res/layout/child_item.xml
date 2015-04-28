@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/row_f_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5" >
+
+    <ImageView
+        android:id="@+id/row_st_iv"
+        android:layout_width="8dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/row_data_tv"
+        android:layout_alignParentTop="true"
+        android:background="#795548"
+        android:contentDescription="IMAGEM" />
+
+    <TextView
+        android:id="@+id/row_nome_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/row_top_ll"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/row_st_iv"
+        android:text="@string/app_text_exemplo"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/row_data_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/row_nome_tv"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/row_st_iv"
+        android:text="@string/app_text_exemplo"
+        android:textSize="14sp" />
+
+</RelativeLayout>

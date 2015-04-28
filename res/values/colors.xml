@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="listview_pressed">#FFdddddd</color>
+    <color name="listview_focused">#FF7dbcd3</color>
+    <color name="listview_checked">#FFededed</color>
+	
+    <color name="secondaryTextColor">#ff727272</color>
+    <color name="colorHighLight">#fff9f9f9</color>
+    
+	<drawable name="actionbar_background">#FF0000</drawable>
+    <color name="color_title">#00FF00</color>
+    
+    <color name="primaryColor">#512DA8</color>
+    <color name="primaryColorDark">#673AB7</color>
+    <color name="colorAccent">#651FFF</color>
+    <color name="textColorBlack">#000</color>
+    <color name="windowBackground">#EEE</color>
+    <color name="pinned_header_text">#FF3c3c3c</color>
+    
+    
+    <!-- http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
+    <color name="material_blue_500">#5677fc</color>
+</resources>
