@@ -70,6 +70,7 @@ public class HomeActivity extends AppCompatActivity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		
 		
+		//PRIMEIRO ITEM DO MENU
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 	    TextView v = new TextView(HomeActivity.this);
         v.setBackgroundResource(R.color.material_blue_500);
@@ -81,38 +82,34 @@ public class HomeActivity extends AppCompatActivity {
 		String formattedDate = df.format(c.getTime()); 
         v.setText("HOJE\n "+formattedDate);
         v.setGravity(Gravity.CENTER);
-
-
-        // Adding button to listview at footer
         mDrawerList.addHeaderView(v);
+        
 
+        //DEMAIS ITENS DO MENU
 		DrawerListAdapter dla = new DrawerListAdapter(this, mDrawerItens);
 		mDrawerList.setAdapter(dla);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 
-		// enable ActionBar app icon to behave as action to toggle nav drawer
+		// HABILITAR MENU NA ACTIONBAR
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
-		// ActionBarDrawerToggle ties together the the proper interactions
-		// between the sliding drawer and the action bar app icon
-		mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		mToolbar, /* nav drawer image to replace 'Up' caret */
-		R.string.drawer_open, /* "open drawer" description for accessibility */
-		R.string.drawer_close /* "close drawer" description for accessibility */
+		//CRIAR DRAWER TOGGLE
+		mDrawerToggle = new ActionBarDrawerToggle(this,
+		mDrawerLayout, 
+		mToolbar, 
+		R.string.drawer_open, 
+		R.string.drawer_close 
 		) {
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(mTitle);
-				supportInvalidateOptionsMenu(); // creates call to
-												// onPrepareOptionsMenu()
+				supportInvalidateOptionsMenu(); 
 			}
 
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(mDrawerTitle);
-				supportInvalidateOptionsMenu(); // creates call to
-												// onPrepareOptionsMenu()
+				supportInvalidateOptionsMenu(); 
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -124,7 +121,7 @@ public class HomeActivity extends AppCompatActivity {
 	}
 
 	// DRAWER
-	/* The click listner for ListView in the navigation drawer */
+	/* QUANDO CLICADO EM UM ITEM DO MENU LATERAL */
 	private class DrawerItemClickListener implements
 			ListView.OnItemClickListener {
 		@Override
@@ -138,7 +135,6 @@ public class HomeActivity extends AppCompatActivity {
 	}
 
 	private void selectItem(int position) {
-		// update the main content by replacing fragments
 
 		switch (position) {
 		case 0:

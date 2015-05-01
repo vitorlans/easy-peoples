@@ -45,20 +45,11 @@ public class ContatosFragment extends Fragment {
             Bundle savedInstanceState) {
     	setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.fragment_contatos, container, false);
-        
-        DAOUsuarios mdU = new DAOUsuarios(getActivity());
-		mListUsuarios = mdU.RecuperarTodos();
 
-		/*
-		String[] arrayUser = getResources().getStringArray(R.array.countries);
-		mListUsuarios = new ArrayList<>();
-		
-		for(int x = 0; x < arrayUser.length ; x++){
-			
-			Usuarios u = new Usuarios();
-			u.setNome(arrayUser[x]);
-			mListUsuarios.add(u);
-		}*/
+        //BD LIST
+        DAOUsuarios mdU = new DAOUsuarios(getActivity());
+		mListUsuarios = mdU.RecuperarSimplesTodos();
+
 		
 		mLVusuarios = (PinnedHeaderListView)rootView.findViewById(R.id.main_usuarios_lv);
 		

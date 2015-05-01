@@ -28,6 +28,8 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import com.easy.gpessoal.NovoCompromissoActivity;
 import com.easy.gpessoal.R;
 import com.easy.gpessoal.adapters.CompromissosAdapter;
+import com.easy.gpessoal.database.DAOCompromissos;
+import com.easy.gpessoal.database.DAOUsuarios;
 import com.easy.gpessoal.models.Compromissos;
 import com.melnykov.fab.FloatingActionButton;
 
@@ -38,6 +40,8 @@ public class CompromissosFragment extends Fragment {
 	ExpandableListView expListView;
 	Map<String, List<Compromissos>> compromissosCollection;
 	List<Compromissos> lc;
+	CompromissosAdapter expListAdapter;
+	
     public CompromissosFragment() {
         // Empty constructor required for fragment subclasses
     }
@@ -52,7 +56,7 @@ public class CompromissosFragment extends Fragment {
 		createCollection();
 		
 		expListView = (ExpandableListView)rootView.findViewById(R.id.laptop_list);
-		final CompromissosAdapter expListAdapter = new CompromissosAdapter(getActivity(), groupList, compromissosCollection);
+		expListAdapter = new CompromissosAdapter(getActivity(), groupList, compromissosCollection);
 		expListView.setAdapter(expListAdapter);
 		
 		setGroupIndicatorToRight();
@@ -93,7 +97,6 @@ public class CompromissosFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				
 				Intent n = new Intent(getActivity(), NovoCompromissoActivity.class);
 				startActivity(n);
@@ -103,6 +106,13 @@ public class CompromissosFragment extends Fragment {
 		});	
         
         return rootView;
+    }
+    
+    @Override
+    public void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	expListAdapter.notifyDataSetChanged();
     }
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -161,6 +171,10 @@ public class CompromissosFragment extends Fragment {
 		
 		lc = new ArrayList<Compromissos>();
 		
+		DAOCompromissos mdC = new DAOCompromissos(getActivity());
+		lc = mdC.RecuperarTodos();
+		
+		/*
 		for(int x = 0; x < 10 ; x++){
 			
 			Compromissos c = new Compromissos();
@@ -208,6 +222,7 @@ public class CompromissosFragment extends Fragment {
 		c4.setDataFim("26/04/2015 23:59");
 		c4.setStatus("A");
 		lc.add(c4);
+		*/
 	}
 	
 	private void createCollection() {

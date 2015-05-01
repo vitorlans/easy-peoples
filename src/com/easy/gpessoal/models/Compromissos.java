@@ -7,6 +7,7 @@ public class Compromissos {
 	String Descricao;
 	String DataInicio;
 	String DataFim;
+	String Participantes;
 	String Status;
 	Integer IdUser;
 	Integer IdEmpr;
@@ -63,6 +64,11 @@ public class Compromissos {
 		IdEmpr = idEmpr;
 	}
 	
-	
+	public String getParticipantes() {
+		return Participantes;
+	}
+	public void setParticipantes(String participantes) {
+		Participantes = participantes;
+	}
 
 }

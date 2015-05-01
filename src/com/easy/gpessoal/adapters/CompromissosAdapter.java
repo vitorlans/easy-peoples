@@ -113,7 +113,7 @@ public class CompromissosAdapter extends BaseExpandableListAdapter {
         Date dfim = null;
         String sfim = comp.getDataFim().substring(0,10);
         
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 		try {
 			
 			dfim = sdf.parse(sfim);

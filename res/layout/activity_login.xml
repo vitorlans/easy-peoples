@@ -66,10 +66,11 @@
             android:id="@+id/main_entrar_bt"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/main_senha_et"
             android:layout_alignRight="@+id/main_login_et"
             android:layout_below="@+id/main_senha_et"
-            android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
             android:text="entrar" />
 
     </RelativeLayout>
