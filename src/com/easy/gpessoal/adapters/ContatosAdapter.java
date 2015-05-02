@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import com.easy.gpessoal.DetalhesContatosActivity;
 import com.easy.gpessoal.R;
 import com.easy.gpessoal.models.Usuarios;
 import com.easy.gpessoal.views.CircularContact;
@@ -12,8 +13,10 @@ import com.easy.gpessoal.views.PinnedHeaderListView;
 import com.easy.gpessoal.views.PinnedHeaderListView.PinnedHeaderAdapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -108,6 +111,16 @@ public class ContatosAdapter extends BaseAdapter implements Filterable, SectionI
 	  
 	      holder.friendName.setText(displayName);
 
+	      rootView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent n = new Intent(mContext, DetalhesContatosActivity.class);
+				mContext.startActivity(n);
+			}
+		});
+	      
 		return rootView;
 	}
 

@@ -26,13 +26,17 @@
             android:name=".ContatosActivity"
             android:label="Contatos" >
         </activity>
-         <activity
+        <activity
             android:name=".NovoCompromissoActivity"
             android:label="Novo Compromisso" >
-             <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity">
+                android:value=".HomeActivity" >
             </meta-data>
+        </activity>
+        <activity
+            android:name=".DetalhesContatosActivity"
+            android:label="@string/title_activity_detalhes_contatos" >
         </activity>
     </application>
 

@@ -257,6 +257,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int alertDialogTheme=0x7f01005c;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int alpha_factor=0x7f0100ce;
         /**  Default AutoCompleteTextView style. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -370,6 +378,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int checkedTextViewStyle=0x7f010065;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int circular_parallax=0x7f0100d1;
         /**  Close button icon 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -811,6 +827,14 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int initialActivityCount=0x7f01009e;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int inner_parallax_factor=0x7f0100cf;
         /**  Specifies whether the theme is light, otherwise it is dark. 
          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
@@ -1036,6 +1060,22 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int panelMenuListWidth=0x7f01004e;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int parallax_factor=0x7f0100cd;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int parallax_views_num=0x7f0100d0;
         /**  Default PopupMenu style. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1986,7 +2026,7 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020038;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020039;
         public static final int abc_textfield_search_material=0x7f02003a;
-        public static final int actionbar_background=0x7f020046;
+        public static final int actionbar_background=0x7f020048;
         public static final int drawer_item_bg=0x7f02003b;
         public static final int fab_shadow=0x7f02003c;
         public static final int fab_shadow_mini=0x7f02003d;
@@ -1995,9 +2035,11 @@ containing a value of this type.
         public static final int ic_check=0x7f020040;
         public static final int ic_launcher=0x7f020041;
         public static final int ic_menu_search=0x7f020042;
-        public static final int ic_plus=0x7f020043;
-        public static final int listview_selector=0x7f020044;
-        public static final int v5_0_1_friend_overlay_bg=0x7f020045;
+        public static final int ic_person_white_120dp=0x7f020043;
+        public static final int ic_plus=0x7f020044;
+        public static final int listview_ripple_background_selector=0x7f020045;
+        public static final int listview_selector=0x7f020046;
+        public static final int v5_0_1_friend_overlay_bg=0x7f020047;
     }
     public static final class id {
         public static final int action_bar=0x7f090041;
@@ -2013,6 +2055,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09003e;
         public static final int action_mode_bar_stub=0x7f09003d;
         public static final int action_mode_close_button=0x7f090026;
+        public static final int action_settings=0x7f090076;
         public static final int activity_chooser_view_content=0x7f090027;
         public static final int alertTitle=0x7f090031;
         public static final int always=0x7f090019;
@@ -2067,7 +2110,7 @@ containing a value of this type.
         public static final int never=0x7f09001c;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
-        public static final int novo_action_salvar=0x7f090076;
+        public static final int novo_action_salvar=0x7f090077;
         public static final int novo_data_fim_tv=0x7f09005f;
         public static final int novo_data_inicio_tv=0x7f09005d;
         public static final int novo_descric_et=0x7f09005b;
@@ -2175,27 +2218,29 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_select_dialog_material=0x7f030017;
         public static final int abc_simple_dropdown_hint=0x7f030018;
-        public static final int activity_home=0x7f030019;
-        public static final int activity_login=0x7f03001a;
-        public static final int activity_novo=0x7f03001b;
-        public static final int app_toolbar=0x7f03001c;
-        public static final int child_item=0x7f03001d;
-        public static final int date_time_picker=0x7f03001e;
-        public static final int drawer_list_item=0x7f03001f;
-        public static final int drawer_row=0x7f030020;
-        public static final int fragment_comp=0x7f030021;
-        public static final int fragment_contatos=0x7f030022;
-        public static final int group_item=0x7f030023;
-        public static final int listview_item=0x7f030024;
-        public static final int pinned_header_listview_side_header=0x7f030025;
-        public static final int select_dialog_item_material=0x7f030026;
-        public static final int select_dialog_multichoice_material=0x7f030027;
-        public static final int select_dialog_singlechoice_material=0x7f030028;
-        public static final int support_simple_spinner_dropdown_item=0x7f030029;
+        public static final int activity_detalhes_contatos=0x7f030019;
+        public static final int activity_home=0x7f03001a;
+        public static final int activity_login=0x7f03001b;
+        public static final int activity_novo=0x7f03001c;
+        public static final int app_toolbar=0x7f03001d;
+        public static final int child_item=0x7f03001e;
+        public static final int date_time_picker=0x7f03001f;
+        public static final int drawer_list_item=0x7f030020;
+        public static final int drawer_row=0x7f030021;
+        public static final int fragment_comp=0x7f030022;
+        public static final int fragment_contatos=0x7f030023;
+        public static final int group_item=0x7f030024;
+        public static final int listview_item=0x7f030025;
+        public static final int pinned_header_listview_side_header=0x7f030026;
+        public static final int select_dialog_item_material=0x7f030027;
+        public static final int select_dialog_multichoice_material=0x7f030028;
+        public static final int select_dialog_singlechoice_material=0x7f030029;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
     }
     public static final class menu {
         public static final int contatos=0x7f0d0000;
-        public static final int novo=0x7f0d0001;
+        public static final int detalhes_contatos=0x7f0d0001;
+        public static final int novo=0x7f0d0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -2287,6 +2332,7 @@ containing a value of this type.
         public static final int tab_date=0x7f0a001f;
         public static final int tab_time=0x7f0a0020;
         public static final int title_activity_compr=0x7f0a0021;
+        public static final int title_activity_detalhes_contatos=0x7f0a002a;
         public static final int title_section1=0x7f0a0022;
         public static final int title_section2=0x7f0a0023;
         public static final int title_section3=0x7f0a0024;
@@ -4445,6 +4491,98 @@ containing a value of this type.
           @attr name com.easy.gpessoal:preserveIconSpacing
         */
         public static final int MenuView_preserveIconSpacing = 7;
+        /** Attributes that can be used with a ParallaxScroll.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ParallaxScroll_alpha_factor com.easy.gpessoal:alpha_factor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_circular_parallax com.easy.gpessoal:circular_parallax}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_inner_parallax_factor com.easy.gpessoal:inner_parallax_factor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_parallax_factor com.easy.gpessoal:parallax_factor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_parallax_views_num com.easy.gpessoal:parallax_views_num}</code></td><td></td></tr>
+           </table>
+           @see #ParallaxScroll_alpha_factor
+           @see #ParallaxScroll_circular_parallax
+           @see #ParallaxScroll_inner_parallax_factor
+           @see #ParallaxScroll_parallax_factor
+           @see #ParallaxScroll_parallax_views_num
+         */
+        public static final int[] ParallaxScroll = {
+            0x7f0100cd, 0x7f0100ce, 0x7f0100cf, 0x7f0100d0,
+            0x7f0100d1
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.easy.gpessoal.R.attr#alpha_factor}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.easy.gpessoal:alpha_factor
+        */
+        public static final int ParallaxScroll_alpha_factor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.easy.gpessoal.R.attr#circular_parallax}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.easy.gpessoal:circular_parallax
+        */
+        public static final int ParallaxScroll_circular_parallax = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.easy.gpessoal.R.attr#inner_parallax_factor}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.easy.gpessoal:inner_parallax_factor
+        */
+        public static final int ParallaxScroll_inner_parallax_factor = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.easy.gpessoal.R.attr#parallax_factor}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.easy.gpessoal:parallax_factor
+        */
+        public static final int ParallaxScroll_parallax_factor = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.easy.gpessoal.R.attr#parallax_views_num}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.easy.gpessoal:parallax_views_num
+        */
+        public static final int ParallaxScroll_parallax_views_num = 3;
         /** Attributes that can be used with a PopupWindow.
            <p>Includes the following attributes:</p>
            <table>
