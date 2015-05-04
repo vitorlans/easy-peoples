@@ -22,7 +22,7 @@
     android:layout_height="match_parent" >
 
     <ExpandableListView
-        android:id="@+id/laptop_list"
+        android:id="@+id/comp_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ExpandableListView>

@@ -8,97 +8,171 @@
     <include
         android:id="@+id/app_toolbar"
         layout="@layout/app_toolbar" />
-<com.nirhart.parallaxscroll.views.ParallaxScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:parallax_factor="1.9"
-    tools:context=".MainActivity" >
 
-    <LinearLayout
+    <com.nirhart.parallaxscroll.views.ParallaxScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        app:parallax_factor="1.9"
+        tools:context=".MainActivity" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:background="@drawable/ic_person_white_120dp"
-            android:gravity="center"
-            tools:ignore="HardcodedText" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Vitor Hugo da Silva Santos"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="vitor_hs@live.com"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Data de Nascimento"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="26/04/1995"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Endereço"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rua Mauricio Affonso Moreno, 41"
-            android:textSize="26sp"
-            android:background="@android:color/white"
-            android:padding="5dp"
-            tools:ignore="HardcodedText" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/detalhes_img_iv"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="#ef3"
+                android:contentDescription="IMAGEM"
+                android:gravity="center"
+                android:src="@drawable/person_white_540dp" />
 
-</com.nirhart.parallaxscroll.views.ParallaxScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_account"
+                    android:gravity="bottom"
+                    android:padding="5dp"
+                    android:text="  Nome"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/detalhes_nome_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/white"
+                    android:padding="5dp"
+                    android:text="Vitor Hugo da Silva Santos"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:gravity="bottom"
+                    android:padding="5dp"
+                    android:text="  Email"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/detalhes_email_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/white"
+                    android:padding="5dp"
+                    android:text="vitor_hs@live.com"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:gravity="bottom"
+                    android:padding="5dp"
+                    android:text="  Telefone"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/detalhes_telefone_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/white"
+                    android:padding="5dp"
+                    android:text="19 99333 1334"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_calendar_text"
+                    android:gravity="bottom"
+                    android:padding="5dp"
+                    android:text="  Data de Nascimento"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/detalhes_dtnasc_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/white"
+                    android:padding="5dp"
+                    android:text="26/04/1995"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_map_marker"
+                    android:gravity="bottom"
+                    android:padding="5dp"
+                    android:text="  Endereço"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/detalhes_endereco_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/white"
+                    android:padding="5dp"
+                    android:text="Rua Mauricio Affonso Moreno, 41"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:drawableLeft="@drawable/ic_account_plus"
+                    android:gravity="bottom"
+                    android:padding="5dp"
+                    android:text="  Apelido"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/detalhes_apelido_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/white"
+                    android:padding="5dp"
+                    android:text="Vitão"
+                    android:textSize="22sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.nirhart.parallaxscroll.views.ParallaxScrollView>
+
 </LinearLayout>

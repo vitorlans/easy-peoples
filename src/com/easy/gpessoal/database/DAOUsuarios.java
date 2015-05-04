@@ -101,7 +101,7 @@ public class DAOUsuarios {
 	public Usuarios RecuperarUsuario(Integer _id){
 		
 
-		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, null, null, null, null, "nome ASC");
+		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, "_id="+_id, null, null, null, "nome ASC");
 		Usuarios u = new Usuarios();
 
 		if(cursor.getCount()>0){

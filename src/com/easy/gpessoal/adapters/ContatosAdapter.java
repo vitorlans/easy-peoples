@@ -14,6 +14,7 @@ import com.easy.gpessoal.views.PinnedHeaderListView.PinnedHeaderAdapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,8 +27,8 @@ import android.widget.Filterable;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-public class ContatosAdapter extends BaseAdapter implements Filterable, SectionIndexer,
-		PinnedHeaderAdapter, OnScrollListener {
+public class ContatosAdapter extends BaseAdapter implements Filterable,
+		SectionIndexer, PinnedHeaderAdapter, OnScrollListener {
 	private int mLocationPosition = -1;
 	private List<String> mFriendsSections;
 	private List<String> mFriendsSections2;
@@ -35,27 +36,27 @@ public class ContatosAdapter extends BaseAdapter implements Filterable, SectionI
 	private List<Integer> mFriendsPositions;
 	private LayoutInflater mInflater;
 	private Context mContext;
-	
-    private List<Usuarios> mStringFilterList;
-    private ValueFilter valueFilter;
+
+	private List<Usuarios> mStringFilterList;
+	private ValueFilter valueFilter;
 
 	private List<Usuarios> mList;
-	
-	public ContatosAdapter(Context context, List<Usuarios> lu, List<String> friendsSections,
-			List<Integer> friendsPositions ){
-		
+
+	public ContatosAdapter(Context context, List<Usuarios> lu,
+			List<String> friendsSections, List<Integer> friendsPositions) {
+
 		mInflater = LayoutInflater.from(context);
 
 		this.mContext = context;
 		this.mList = lu;
 		this.mStringFilterList = lu;
-		this.mFriendsSections =  friendsSections;
-		
+		this.mFriendsSections = friendsSections;
+
 		this.mFriendsSections2 = new ArrayList<String>();
 		this.mFriendsSections2.addAll(friendsSections);
 
 		this.mFriendsPositions = friendsPositions;
-		
+
 	}
 
 	@Override
@@ -77,7 +78,7 @@ public class ContatosAdapter extends BaseAdapter implements Filterable, SectionI
 	}
 
 	class ViewHolder {
-		public  CircularContact friendProfileCircularContactView;
+		public CircularContact friendProfileCircularContactView;
 		public TextView friendName, headerView;
 
 	}
@@ -85,42 +86,42 @@ public class ContatosAdapter extends BaseAdapter implements Filterable, SectionI
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		 final ViewHolder holder;
-	      final View rootView;
-	      if(convertView==null)
-	        {
-	        holder = new ViewHolder();
-	        rootView = mInflater.inflate(R.layout.listview_item, parent, false);
-	        holder.friendProfileCircularContactView=(CircularContact)rootView
-	            .findViewById(R.id.listview_item__friendPhotoImageView);
-	        holder.friendProfileCircularContactView.getTextView().setTextColor(0xFFffffff);
+		final ViewHolder holder;
+		final View rootView;
+		if (convertView == null) {
+			holder = new ViewHolder();
+			rootView = mInflater.inflate(R.layout.listview_item, parent, false);
+			holder.friendProfileCircularContactView = (CircularContact) rootView
+					.findViewById(R.id.listview_item__friendPhotoImageView);
+			holder.friendProfileCircularContactView.getTextView().setTextColor(
+					0xFFffffff);
 
-	        holder.friendName=(TextView)rootView
-	            .findViewById(R.id.listview_item__friendNameTextView);
-	        rootView.setTag(holder);
-	        }
-	      else
-	        {
-	        rootView=convertView;
-	        holder=(ViewHolder)rootView.getTag();
-	        }
-	      final Usuarios contact= mList.get(position);
-	      final String displayName= contact.getNome();
-	      	
-		holder.friendProfileCircularContactView.setTextAndBackgroundColor(displayName.substring(0, 1), RandomColor());
-	  
-	      holder.friendName.setText(displayName);
+			holder.friendName = (TextView) rootView
+					.findViewById(R.id.listview_item__friendNameTextView);
+			rootView.setTag(holder);
+		} else {
+			rootView = convertView;
+			holder = (ViewHolder) rootView.getTag();
+		}
+		final Usuarios contact = mList.get(position);
+		final String displayName = contact.getNome();
 
-	      rootView.setOnClickListener(new OnClickListener() {
-			
+		holder.friendProfileCircularContactView.setTextAndBackgroundColor(
+				displayName.substring(0, 1), Color.parseColor(contact.getImagem()));
+
+		holder.friendName.setText(displayName);
+
+		rootView.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				
+
 				Intent n = new Intent(mContext, DetalhesContatosActivity.class);
+				n.putExtra("_id", contact.getId());
 				mContext.startActivity(n);
 			}
 		});
-	      
+
 		return rootView;
 	}
 
@@ -162,9 +163,8 @@ public class ContatosAdapter extends BaseAdapter implements Filterable, SectionI
 		int realPosition = position;
 		int section = getSectionForPosition(realPosition);
 		String title = (String) getSections()[section];
-				
-		((TextView) header.findViewById(R.id.header_text))
-				.setText(title);
+
+		((TextView) header.findViewById(R.id.header_text)).setText(title);
 	}
 
 	@Override
@@ -190,82 +190,78 @@ public class ContatosAdapter extends BaseAdapter implements Filterable, SectionI
 		int index = Arrays.binarySearch(mFriendsPositions.toArray(), position);
 		return index >= 0 ? index : -index - 2;
 	}
-	
-	
-	private int select = 0;
-    private Random s = new Random();
-    
-	public int RandomColor() {
-		int[] op = mContext.getResources().getIntArray(R.array.contacts_text_background_colors);
-		
-         select = (s.nextInt(op.length));
-         
-         return op[select];
-    }
 
+	private int select = 0;
+	private Random s = new Random();
+
+	public int RandomColor() {
+		int[] op = mContext.getResources().getIntArray(
+				R.array.contacts_text_background_colors);
+
+		select = (s.nextInt(op.length));
+
+		return op[select];
+	}
 
 	@Override
-    public Filter getFilter() {
-		
-        if (valueFilter == null) {
-            valueFilter = new ValueFilter();
-        }
-        return valueFilter;
-    }
+	public Filter getFilter() {
 
-    private class ValueFilter extends Filter {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults results = new FilterResults();
+		if (valueFilter == null) {
+			valueFilter = new ValueFilter();
+		}
+		return valueFilter;
+	}
 
-            if (constraint != null && constraint.length() > 0) {
-                List<Usuarios> filterList = new ArrayList<Usuarios>();
-                for (int i = 0; i < mStringFilterList.size(); i++) {
-                    if ( (mStringFilterList.get(i).getNome().toUpperCase() )
-                            .contains(constraint.toString().toUpperCase())) {
-
-                    	Usuarios u = new Usuarios();
-                        u.setId(mStringFilterList.get(i).getId());
-                        u.setNome(mStringFilterList.get(i).getNome());
-                        u.setImagem(mStringFilterList.get(i).getImagem());
-
-                       
-                        filterList.add(u);
-                    }
-                }
-                results.count = filterList.size();
-                results.values = filterList;
-            } else {
-                results.count = mStringFilterList.size();
-                results.values = mStringFilterList;
-            }
-            return results;
-
-        }
-
-        @SuppressWarnings("unchecked")
+	private class ValueFilter extends Filter {
 		@Override
-        protected void publishResults(CharSequence constraint,
-                FilterResults results) {
-        	
-        	mFriendsSections.clear();
-        	mFriendsSections.add("");
-        	
-        	mList = (ArrayList<Usuarios>) results.values;
-            notifyDataSetChanged();
-        }
+		protected FilterResults performFiltering(CharSequence constraint) {
+			FilterResults results = new FilterResults();
 
-    }
+			if (constraint != null && constraint.length() > 0) {
+				List<Usuarios> filterList = new ArrayList<Usuarios>();
+				for (int i = 0; i < mStringFilterList.size(); i++) {
+					if ((mStringFilterList.get(i).getNome().toUpperCase())
+							.contains(constraint.toString().toUpperCase())) {
+
+						Usuarios u = new Usuarios();
+						u.setId(mStringFilterList.get(i).getId());
+						u.setNome(mStringFilterList.get(i).getNome());
+						u.setImagem(mStringFilterList.get(i).getImagem());
+
+						filterList.add(u);
+					}
+				}
+				results.count = filterList.size();
+				results.values = filterList;
+			} else {
+				results.count = mStringFilterList.size();
+				results.values = mStringFilterList;
+			}
+			return results;
+
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected void publishResults(CharSequence constraint,
+				FilterResults results) {
+
+			mFriendsSections.clear();
+			mFriendsSections.add("");
+
+			mList = (ArrayList<Usuarios>) results.values;
+			notifyDataSetChanged();
+		}
+
+	}
 
 	public void clearFilter() {
 
 		mFriendsSections.clear();
 		mFriendsSections.addAll(mFriendsSections2);
-        mList = mStringFilterList;
-        notifyDataSetChanged();
-
+		mList = mStringFilterList;
+		notifyDataSetChanged();
 
 	}
-	
-	
+
 }

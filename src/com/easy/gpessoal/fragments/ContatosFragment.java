@@ -9,6 +9,7 @@ import java.util.Map;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.SearchView.OnQueryTextListener;
@@ -41,16 +42,22 @@ public class ContatosFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+    	// TODO Auto-generated method stub
+    	super.onCreate(savedInstanceState);
+    	setHasOptionsMenu(true);
+
+    }
+    
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-    	setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.fragment_contatos, container, false);
 
         //BD LIST
         DAOUsuarios mdU = new DAOUsuarios(getActivity());
 		mListUsuarios = mdU.RecuperarSimplesTodos();
 
-		
 		mLVusuarios = (PinnedHeaderListView)rootView.findViewById(R.id.main_usuarios_lv);
 		
 		initData();
@@ -60,14 +67,7 @@ public class ContatosFragment extends Fragment {
 		mLVusuarios.setTextFilterEnabled(true);
 		mLVusuarios.setPinnedHeaderView(LayoutInflater.from(getActivity()).inflate(
 				R.layout.pinned_header_listview_side_header, mLVusuarios, false));
-
 		
-		
-		/*int[] i = getResources().getIntArray(R.array.contacts_text_background_colors);
-		CircularContact CCV = (CircularContact)findViewById(R.id.listview_item__friendPhotoImageView);
-		CCV.getTextView().setTextColor(0xFFffffff);
-		
-		CCV.setTextAndBackgroundColor("V", i[0]);*/
         return rootView;
     }
 
@@ -105,9 +105,9 @@ public class ContatosFragment extends Fragment {
 		Collections.sort(mSections);
 		int position = 0;
 		for (int i = 0; i < mSections.size(); i++) {
-			mIndexer.put(mSections.get(i), position);// 存入map中，key为首字母字符串，value为首字母在listview中位置
-			mPositions.add(position);// 首字母在listview中位置，存入list中
-			position += mMap.get(mSections.get(i)).size();// 计算下一个首字母在listview的位置
+			mIndexer.put(mSections.get(i), position);
+			mPositions.add(position);
+			position += mMap.get(mSections.get(i)).size();
 		}
 	}
     

@@ -37,6 +37,10 @@
         <activity
             android:name=".DetalhesContatosActivity"
             android:label="@string/title_activity_detalhes_contatos" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" >
+            </meta-data>
         </activity>
     </application>
 

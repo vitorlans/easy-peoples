@@ -51,46 +51,11 @@ public class CompromissosFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_comp, container, false);
         
-        createObjetos();
-		createGroupList();
-		createCollection();
 		
-		expListView = (ExpandableListView)rootView.findViewById(R.id.laptop_list);
-		expListAdapter = new CompromissosAdapter(getActivity(), groupList, compromissosCollection);
-		expListView.setAdapter(expListAdapter);
-		
+ 		expListView = (ExpandableListView)rootView.findViewById(R.id.comp_list);
 		setGroupIndicatorToRight();
-		expListView.setOnChildClickListener(new OnChildClickListener() {
 
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v,
-					int groupPosition, int childPosition, long id) {
-				final Compromissos selected = (Compromissos) expListAdapter.getChild(
-						groupPosition, childPosition);
-				
-				Toast.makeText(getActivity(), selected.getTitulo(), Toast.LENGTH_LONG)
-						.show();
 
-				return true;
-			}
-		});
-
-		for (int y = 0; y < groupList.size(); y++) {
-			expListView.expandGroup(y);
-		}
-		
-		Calendar c = Calendar.getInstance();
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-		String formattedDate = df.format(c.getTime()); 
-		
-		for (int i = 0; i < groupList.size(); i++) {
-		
-			if(groupList.get(i).equals(formattedDate)){
-				expListView.setSelectedGroup(i);
-			}
-		}
-		
-		
 		FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
 		//fab.attachToListView(expListView); 
 		fab.setOnClickListener(new OnClickListener() {
@@ -112,7 +77,42 @@ public class CompromissosFragment extends Fragment {
     public void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	expListAdapter.notifyDataSetChanged();
+
+    	createObjetos();
+ 		createGroupList();
+ 		createCollection();
+ 		
+		expListAdapter = new CompromissosAdapter(getActivity(), groupList, compromissosCollection);
+		expListView.setAdapter(expListAdapter);
+		expListView.setOnChildClickListener(new OnChildClickListener() {
+
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
+				final Compromissos selected = (Compromissos) expListAdapter.getChild(
+						groupPosition, childPosition);
+				
+				Toast.makeText(getActivity(), selected.getTitulo(), Toast.LENGTH_LONG)
+						.show();
+
+				return true;
+			}
+		});
+
+		for (int y = 3; y < groupList.size(); y++) {
+			expListView.expandGroup(y);
+		}
+		
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+		String formattedDate = df.format(c.getTime()); 
+		
+		for (int i = 0; i < groupList.size(); i++) {
+		
+			if(groupList.get(i).equals(formattedDate)){
+				expListView.setSelectedGroup(i);
+			}
+		}
     }
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -144,8 +144,8 @@ public class CompromissosFragment extends Fragment {
 	      Collections.sort(groupList, new Comparator() {
 				public int compare(Object o1, Object o2) {
 					String c1 = (String) o1;
-					String c2 = (String) o2;
-					SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+					String c2 = (String) o2;;
+					SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 					Date formattedDate = null;
 					try {
 						formattedDate = df.parse(c1);
@@ -173,56 +173,7 @@ public class CompromissosFragment extends Fragment {
 		
 		DAOCompromissos mdC = new DAOCompromissos(getActivity());
 		lc = mdC.RecuperarTodos();
-		
-		/*
-		for(int x = 0; x < 10 ; x++){
-			
-			Compromissos c = new Compromissos();
-			c.setTitulo("Compromisso "+x);
-			c.setDataInicio("2"+x+"/05/2015 00:00");
-			c.setDataFim("2"+x+"/05/2015 23:59");
-			c.setStatus("P");
-			lc.add(c);
-		}
-		
-		for(int x = 0; x < 10 ; x++){
-			
-			Compromissos c = new Compromissos();
-			c.setTitulo("Compromisso XY "+x);
-			c.setDataInicio("2"+x+"/04/2015 00:00");
-			c.setDataFim("2"+x+"/04/2015 23:59");
-			c.setStatus("A");
-			lc.add(c);
-		}
-
-		Compromissos c = new Compromissos();
-		c.setTitulo("Compromisso Teste ");
-		c.setDataInicio("12/04/2014 00:00");
-		c.setDataFim("13/04/2014 23:59");
-		c.setStatus("T");
-		lc.add(c);
-		
-		Compromissos c2 = new Compromissos();
-		c2.setTitulo("Compromisso 223");
-		c2.setDataInicio("13/04/2015 00:00");
-		c2.setDataFim("14/04/2015 23:59");
-		c2.setStatus("T");
-		lc.add(c2);
-		
-		Compromissos c3 = new Compromissos();
-		c3.setTitulo("Compromisso Swift");
-		c3.setDataInicio("10/04/2012 00:00");
-		c3.setDataFim("11/04/2012 23:59");
-		c3.setStatus("T");
-		lc.add(c3);
-		
-		Compromissos c4 = new Compromissos();
-		c4.setTitulo("Aniversário Vitor Santos");
-		c4.setDataInicio("26/04/2015 00:00");
-		c4.setDataFim("26/04/2015 23:59");
-		c4.setStatus("A");
-		lc.add(c4);
-		*/
+	
 	}
 	
 	private void createCollection() {
@@ -255,7 +206,8 @@ public class CompromissosFragment extends Fragment {
 						rlc.add(lc.get(i));
 					}
 				};
-				
+
+				OrderByDate(rlc);
 				compromissosCollection.put(groupList.get(y), rlc);
 			}
 			
@@ -270,6 +222,33 @@ public class CompromissosFragment extends Fragment {
 		}
 	}
     
+@SuppressWarnings({ "unchecked", "rawtypes" })
+private void OrderByDate(List<Compromissos> rlc) {
+
+	   Collections.sort(rlc, new Comparator() {
+			public int compare(Object o1, Object o2) {
+				Compromissos c1 = (Compromissos) o1;
+				Compromissos c2 = (Compromissos) o2;
+				SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+				Date formattedDate = null;
+				try {
+					formattedDate = df.parse(c1.getDataInicio());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
+				Date formattedDate2 = null;
+				try {
+					formattedDate2 = df.parse(c2.getDataInicio());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				return formattedDate.compareTo(formattedDate2);
+			}
+		});
+	}
+
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 private void setGroupIndicatorToRight() {
 	/* Get the screen width */

@@ -62,8 +62,8 @@ public class CompromissosAdapter extends BaseExpandableListAdapter {
         ImageView ivStatus =(ImageView) convertView.findViewById(R.id.row_st_iv);
         item.setText(comp.getTitulo());
         item2.setText(comp.getDataInicio() +" - "+ comp.getDataFim());
-        
         setStatus(comp, ivStatus);
+        
         return convertView;
     }
  
@@ -83,7 +83,7 @@ public class CompromissosAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
  
-    @SuppressLint("InflateParams")
+    @SuppressLint({ "InflateParams", "DefaultLocale" })
 	public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
         String compNome = (String) getGroup(groupPosition);
@@ -94,6 +94,21 @@ public class CompromissosAdapter extends BaseExpandableListAdapter {
                     null);
         }
         TextView item = (TextView) convertView.findViewById(R.id.laptop);
+        
+        
+    	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+		Date formattedDate = null;
+		try {
+			formattedDate = df.parse(compNome);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+    	SimpleDateFormat sdf = new SimpleDateFormat("EEE - dd/MM/yyyy", Locale.getDefault());
+    	compNome = sdf.format(formattedDate);
+    	compNome=compNome.toUpperCase();
+		
         item.setTypeface(null, Typeface.BOLD);
         item.setText(compNome);
         return convertView;
