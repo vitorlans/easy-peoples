@@ -54,7 +54,7 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		
 		DAOUsuarios dUs = new DAOUsuarios(DetalhesContatosActivity.this);
 		Usuarios u = dUs.RecuperarUsuario(_id);
-		
+		getSupportActionBar().setTitle(u.getNome());
 		ivImagem.setBackgroundColor(Color.parseColor(u.getImagem()));
 		tvNome.setText(u.getNome() + " " + u.getSobrenome());
 		tvEmail.setText(u.getEmail());

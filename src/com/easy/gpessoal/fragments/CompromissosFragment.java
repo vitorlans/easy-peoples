@@ -25,6 +25,7 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 import android.widget.ExpandableListView.OnChildClickListener;
 
+import com.easy.gpessoal.DetalhesCompromissosActivity;
 import com.easy.gpessoal.NovoCompromissoActivity;
 import com.easy.gpessoal.R;
 import com.easy.gpessoal.adapters.CompromissosAdapter;
@@ -92,8 +93,9 @@ public class CompromissosFragment extends Fragment {
 				final Compromissos selected = (Compromissos) expListAdapter.getChild(
 						groupPosition, childPosition);
 				
-				Toast.makeText(getActivity(), selected.getTitulo(), Toast.LENGTH_LONG)
-						.show();
+				Intent intCompromisso = new Intent(getActivity(), DetalhesCompromissosActivity.class);
+				
+				getActivity().startActivity(intCompromisso);
 
 				return true;
 			}

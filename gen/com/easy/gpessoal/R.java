@@ -2026,25 +2026,26 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020038;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020039;
         public static final int abc_textfield_search_material=0x7f02003a;
-        public static final int actionbar_background=0x7f02004d;
+        public static final int actionbar_background=0x7f02004e;
         public static final int drawer_item_bg=0x7f02003b;
         public static final int fab_shadow=0x7f02003c;
         public static final int fab_shadow_mini=0x7f02003d;
         public static final int ic_account=0x7f02003e;
-        public static final int ic_account_multiple=0x7f02003f;
-        public static final int ic_account_plus=0x7f020040;
-        public static final int ic_calendar_text=0x7f020041;
-        public static final int ic_check=0x7f020042;
-        public static final int ic_email=0x7f020043;
-        public static final int ic_launcher=0x7f020044;
-        public static final int ic_map_marker=0x7f020045;
-        public static final int ic_menu_search=0x7f020046;
-        public static final int ic_person_white_120dp=0x7f020047;
-        public static final int ic_phone=0x7f020048;
-        public static final int ic_plus=0x7f020049;
-        public static final int listview_selector=0x7f02004a;
-        public static final int person_white_540dp=0x7f02004b;
-        public static final int v5_0_1_friend_overlay_bg=0x7f02004c;
+        public static final int ic_account_circle=0x7f02003f;
+        public static final int ic_account_multiple=0x7f020040;
+        public static final int ic_account_plus=0x7f020041;
+        public static final int ic_calendar_text=0x7f020042;
+        public static final int ic_check=0x7f020043;
+        public static final int ic_email=0x7f020044;
+        public static final int ic_launcher=0x7f020045;
+        public static final int ic_map_marker=0x7f020046;
+        public static final int ic_menu_search=0x7f020047;
+        public static final int ic_person_white_120dp=0x7f020048;
+        public static final int ic_phone=0x7f020049;
+        public static final int ic_plus=0x7f02004a;
+        public static final int listview_selector=0x7f02004b;
+        public static final int person_white_540dp=0x7f02004c;
+        public static final int v5_0_1_friend_overlay_bg=0x7f02004d;
     }
     public static final class id {
         public static final int action_bar=0x7f090041;
@@ -2060,6 +2061,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09003e;
         public static final int action_mode_bar_stub=0x7f09003d;
         public static final int action_mode_close_button=0x7f090026;
+        public static final int action_settings=0x7f09007d;
         public static final int activity_chooser_view_content=0x7f090027;
         public static final int alertTitle=0x7f090031;
         public static final int always=0x7f090019;
@@ -2121,7 +2123,7 @@ containing a value of this type.
         public static final int never=0x7f09001c;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
-        public static final int novo_action_salvar=0x7f09007d;
+        public static final int novo_action_salvar=0x7f09007e;
         public static final int novo_data_fim_tv=0x7f090066;
         public static final int novo_data_inicio_tv=0x7f090064;
         public static final int novo_descric_et=0x7f090062;
@@ -2229,28 +2231,30 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_select_dialog_material=0x7f030017;
         public static final int abc_simple_dropdown_hint=0x7f030018;
-        public static final int activity_detalhes_contatos=0x7f030019;
-        public static final int activity_home=0x7f03001a;
-        public static final int activity_login=0x7f03001b;
-        public static final int activity_novo=0x7f03001c;
-        public static final int app_toolbar=0x7f03001d;
-        public static final int child_item=0x7f03001e;
-        public static final int date_time_picker=0x7f03001f;
-        public static final int drawer_list_item=0x7f030020;
-        public static final int drawer_row=0x7f030021;
-        public static final int fragment_comp=0x7f030022;
-        public static final int fragment_contatos=0x7f030023;
-        public static final int group_item=0x7f030024;
-        public static final int listview_item=0x7f030025;
-        public static final int pinned_header_listview_side_header=0x7f030026;
-        public static final int select_dialog_item_material=0x7f030027;
-        public static final int select_dialog_multichoice_material=0x7f030028;
-        public static final int select_dialog_singlechoice_material=0x7f030029;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
+        public static final int activity_detalhes_compromissos=0x7f030019;
+        public static final int activity_detalhes_contatos=0x7f03001a;
+        public static final int activity_home=0x7f03001b;
+        public static final int activity_login=0x7f03001c;
+        public static final int activity_novo=0x7f03001d;
+        public static final int app_toolbar=0x7f03001e;
+        public static final int child_item=0x7f03001f;
+        public static final int date_time_picker=0x7f030020;
+        public static final int drawer_list_item=0x7f030021;
+        public static final int drawer_row=0x7f030022;
+        public static final int fragment_comp=0x7f030023;
+        public static final int fragment_contatos=0x7f030024;
+        public static final int group_item=0x7f030025;
+        public static final int listview_item=0x7f030026;
+        public static final int pinned_header_listview_side_header=0x7f030027;
+        public static final int select_dialog_item_material=0x7f030028;
+        public static final int select_dialog_multichoice_material=0x7f030029;
+        public static final int select_dialog_singlechoice_material=0x7f03002a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002b;
     }
     public static final class menu {
         public static final int contatos=0x7f0d0000;
-        public static final int novo=0x7f0d0001;
+        public static final int detalhes_compromissos=0x7f0d0001;
+        public static final int novo=0x7f0d0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -2342,6 +2346,7 @@ containing a value of this type.
         public static final int tab_date=0x7f0a001f;
         public static final int tab_time=0x7f0a0020;
         public static final int title_activity_compr=0x7f0a0021;
+        public static final int title_activity_detalhes_compromissos=0x7f0a002b;
         public static final int title_activity_detalhes_contatos=0x7f0a002a;
         public static final int title_section1=0x7f0a0022;
         public static final int title_section2=0x7f0a0023;
