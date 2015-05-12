@@ -241,7 +241,7 @@
     </string-array>
 
     <string name="title_activity_detalhes_contatos">Detalhes</string>
-    <string name="title_activity_detalhes_compromissos">DetalhesCompromissosActivity</string>
+    <string name="title_activity_detalhes_compromissos">Detalhes do Compromisso</string>
     <string name="title_activity_empresa">EmpresaActivity</string>
 
 </resources>

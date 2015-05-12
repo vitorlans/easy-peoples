@@ -116,6 +116,7 @@ public class CompromissosFragment extends Fragment {
 				Intent intCompromisso = new Intent(getActivity(),
 						DetalhesCompromissosActivity.class);
 
+				intCompromisso.putExtra("idComp", selected.getId());
 				getActivity().startActivity(intCompromisso);
 
 				return true;
