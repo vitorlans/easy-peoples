@@ -1,8 +1,14 @@
 package com.easy.gpessoal.models;
 
+import java.io.Serializable;
 
-public class Usuarios {
+
+public class Usuarios implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5058612444049850025L;
 	private Integer Id;
 	private String Nome;
 	private String Sobrenome;
@@ -35,6 +41,11 @@ public class Usuarios {
 		Cidade = cidade;
 		Cep = cep;
 		Telefone = telefone;
+	}
+
+	public Usuarios(String nome, String email) {
+		this.Nome = nome;
+		this.Email = email;
 	}
 
 	public Integer getId() {

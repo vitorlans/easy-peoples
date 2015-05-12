@@ -36,6 +36,7 @@ import android.widget.ExpandableListView.OnChildClickListener;
 
 import com.easy.gpessoal.DetalhesCompromissosActivity;
 import com.easy.gpessoal.EmpresaActivity;
+import com.easy.gpessoal.LoginActivity;
 import com.easy.gpessoal.NovoCompromissoActivity;
 import com.easy.gpessoal.R;
 import com.easy.gpessoal.adapters.CompromissosAdapter;
@@ -318,8 +319,14 @@ public class CompromissosFragment extends Fragment {
 			getActivity().startActivity(n);
 
 			return true;
+		}else{
+			Intent n = new Intent(getActivity(), LoginActivity.class);
+			getActivity().startActivity(n);
+
+			return true;
+			
 		}
-		return super.onOptionsItemSelected(item);
+		
 	}
 
 }

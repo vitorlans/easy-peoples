@@ -64,4 +64,16 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		tvApelido.setText(u.getApelido());
 		}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        finish();
+	        return true;
+	    }
+		
+		return super.onOptionsItemSelected(item);
+	}
 }

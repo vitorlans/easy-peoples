@@ -141,7 +141,6 @@ public class HomeActivity extends AppCompatActivity {
 			Fragment fragment = new CompromissosFragment();
 			Bundle args = new Bundle();
 			fragment.setArguments(args);
-
 			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
 

@@ -99,12 +99,10 @@
                 android:text="Participantes"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <EditText
+            <com.easy.gpessoal.views.ParticipantesCompletion
                 android:id="@+id/novo_particip_ed"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10" >
-            </EditText>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 

@@ -1,78 +1,63 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.easy.atividade05.MainActivity" >
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.easy.gpessoal.LoginActivity" >
 
-    <RelativeLayout
+    <!-- Login toolbar -->
+
+    <include
+        android:id="@+id/app_toolbar"
+        layout="@layout/app_toolbar" />
+
+    <ScrollView
+        android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-        <ImageView
-            android:id="@+id/main_fundo_iv"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_marginTop="100dp"
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:scaleType="fitXY"
-             />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/main_login_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/main_login_et"
-            android:layout_below="@+id/main_fundo_iv"
-                        android:labelFor="@+id/main_login_et"
-            
-            android:layout_marginTop="44dp"
-            android:text="login" />
+            <AutoCompleteTextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-        <EditText
-            android:maxLines="1"
-            android:maxLength="10"
-            android:inputType="text"
-            android:id="@+id/main_login_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/main_senha_et"
-            android:layout_below="@+id/main_login_tv"
-            android:ems="10" >
-        </EditText>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Senha"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-         <TextView
-            android:id="@+id/main_senha_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/main_senha_et"
-            android:layout_below="@+id/main_login_et"
-            android:layout_marginTop="19dp"
-            android:labelFor="@+id/main_senha_et"
-            android:text="senha" />
-         
-        <EditText
-            android:maxLines="1"
-            android:maxLength="10"
-            android:id="@+id/main_senha_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/main_senha_tv"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:inputType="textPassword" />
+            <Button
+                android:id="@+id/entrar_bt"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Entrar"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 
-        <Button
-            android:id="@+id/main_entrar_bt"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/main_senha_et"
-            android:layout_alignRight="@+id/main_login_et"
-            android:layout_below="@+id/main_senha_et"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
-            android:text="entrar" />
-
-    </RelativeLayout>
-
-</ScrollView>
+</LinearLayout>
