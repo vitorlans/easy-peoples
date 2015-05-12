@@ -2,6 +2,7 @@ package com.easy.gpessoal;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -16,10 +17,12 @@ import com.easy.gpessoal.utils.DateTimePicker;
 import com.easy.gpessoal.utils.SimpleDateTimePicker;
 import com.easy.gpessoal.views.ParticipantesCompletion;
 import com.tokenautocomplete.FilteredArrayAdapter;
+import com.tokenautocomplete.TokenCompleteTextView.TokenListener;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,13 +34,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class NovoCompromissoActivity extends AppCompatActivity implements
-		DateTimePicker.OnDateTimeSetListener {
+		DateTimePicker.OnDateTimeSetListener, TokenListener {
 
 	private Integer df;
 	private Date todayDate;
 
 	ArrayAdapter<Usuarios> Au;
 	List<Usuarios> u;
+	List<String> addlu = new ArrayList<String>();
+
 	private SimpleDateTimePicker simpleDateTimePicker;
 
 	private TextView descricao;
@@ -56,7 +61,7 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 		simpleDateTimePicker = SimpleDateTimePicker.make(
-				"Set Date & Time Title", new Date(), this,
+				"Selecione uma Data e Hora", new Date(), this,
 				getSupportFragmentManager());
 
 		DAOUsuarios dU = new DAOUsuarios(this);
@@ -101,7 +106,10 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 
 		participantes = (ParticipantesCompletion) findViewById(R.id.novo_particip_ed);
 		participantes.setAdapter(Au);
-		
+		char[] splitChar = { ',', ';', ' ' };
+		participantes.setSplitChar(splitChar);
+		participantes.setTokenListener(this);
+
 	}
 
 	@SuppressWarnings("deprecation")
@@ -200,7 +208,7 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 
 			if (dti.after(dtf)) {
 				Toast.makeText(NovoCompromissoActivity.this,
-						"Data Fim, maior que Data Inicio. Verifique",
+						"Data de Termino, maior que Data de Inicio. Verifique",
 						Toast.LENGTH_SHORT).show();
 			} else {
 
@@ -227,7 +235,13 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 			c.setDescricao(descricao.getText().toString());
 			c.setDataInicio(dataInicio.getText().toString());
 			c.setDataFim(dataFim.getText().toString());
-			c.setParticipantes(participantes.getText().toString());
+		
+			String c1="";
+			for(String u : addlu){
+				c1 += u + "\n";
+			}
+			c.setParticipantes(c1);
+
 			c.setStatus("A");
 
 			DAOCompromissos mdC = new DAOCompromissos(
@@ -238,5 +252,23 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onTokenAdded(Object token) {
+		// TODO Auto-generated method stub
+		Usuarios u = (Usuarios) token;
+		
+		addlu.add(u.getEmail());
+	
+	}
+
+	@Override
+	public void onTokenRemoved(Object token) {
+		// TODO Auto-generated method stub
+		Usuarios u = (Usuarios) token;
+
+		addlu.remove(u.getEmail());
+		
 	}
 }

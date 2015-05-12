@@ -37,7 +37,7 @@ public class ContatosAdapter extends BaseAdapter implements Filterable,
 	private LayoutInflater mInflater;
 	private Context mContext;
 
-	private List<Usuarios> mStringFilterList;
+	private List<Usuarios> mUsuariosFilterList;
 	private ValueFilter valueFilter;
 
 	private List<Usuarios> mList;
@@ -49,7 +49,7 @@ public class ContatosAdapter extends BaseAdapter implements Filterable,
 
 		this.mContext = context;
 		this.mList = lu;
-		this.mStringFilterList = lu;
+		this.mUsuariosFilterList = lu;
 		this.mFriendsSections = friendsSections;
 
 		this.mFriendsSections2 = new ArrayList<String>();
@@ -219,14 +219,15 @@ public class ContatosAdapter extends BaseAdapter implements Filterable,
 
 			if (constraint != null && constraint.length() > 0) {
 				List<Usuarios> filterList = new ArrayList<Usuarios>();
-				for (int i = 0; i < mStringFilterList.size(); i++) {
-					if ((mStringFilterList.get(i).getNome().toUpperCase())
+				for (int i = 0; i < mUsuariosFilterList.size(); i++) {
+					if ((mUsuariosFilterList.get(i).getNome().toUpperCase())
+							.contains(constraint.toString().toUpperCase())|| (mUsuariosFilterList.get(i).getEmail().toUpperCase())
 							.contains(constraint.toString().toUpperCase())) {
 
 						Usuarios u = new Usuarios();
-						u.setId(mStringFilterList.get(i).getId());
-						u.setNome(mStringFilterList.get(i).getNome());
-						u.setImagem(mStringFilterList.get(i).getImagem());
+						u.setId(mUsuariosFilterList.get(i).getId());
+						u.setNome(mUsuariosFilterList.get(i).getNome());
+						u.setImagem(mUsuariosFilterList.get(i).getImagem());
 
 						filterList.add(u);
 					}
@@ -234,8 +235,8 @@ public class ContatosAdapter extends BaseAdapter implements Filterable,
 				results.count = filterList.size();
 				results.values = filterList;
 			} else {
-				results.count = mStringFilterList.size();
-				results.values = mStringFilterList;
+				results.count = mUsuariosFilterList.size();
+				results.values = mUsuariosFilterList;
 			}
 			return results;
 
@@ -259,7 +260,7 @@ public class ContatosAdapter extends BaseAdapter implements Filterable,
 
 		mFriendsSections.clear();
 		mFriendsSections.addAll(mFriendsSections2);
-		mList = mStringFilterList;
+		mList = mUsuariosFilterList;
 		notifyDataSetChanged();
 
 	}

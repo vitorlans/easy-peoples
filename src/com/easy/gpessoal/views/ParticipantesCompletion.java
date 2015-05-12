@@ -34,7 +34,7 @@ public class ParticipantesCompletion extends TokenCompleteTextView{
 	        //Stupid simple example of guessing if we have an email or not
 	        int index = completionText.indexOf('@');
 	        if (index == -1) {
-	            return new Usuarios(completionText, completionText.replace(" ", "") + "@invalido.com");
+	            return new Usuarios(completionText, completionText.replace(" ", "") + "@gmail.com");
 	        } else {
 	            return new Usuarios(completionText.substring(0, index), completionText);
 	        }

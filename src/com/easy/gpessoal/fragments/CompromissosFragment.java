@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ExpandableListView.OnChildClickListener;
 
@@ -124,20 +125,8 @@ public class CompromissosFragment extends Fragment {
 			}
 		});
 
-		for (int y = 3; y < groupList.size(); y++) {
-			expListView.expandGroup(y);
-		}
-
-		Calendar c = Calendar.getInstance();
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-		String formattedDate = df.format(c.getTime());
-
-		for (int i = 0; i < groupList.size(); i++) {
-
-			if (groupList.get(i).equals(formattedDate)) {
-				expListView.setSelectedGroup(i);
-			}
-		}
+		ExpandeRecents();
+		IrHoje();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -306,6 +295,43 @@ public class CompromissosFragment extends Fragment {
 		super.onCreateOptionsMenu(menu, menuInflater);
 		menuInflater.inflate(R.menu.compromissos, menu);
 
+		SearchManager searchManager = (SearchManager) getActivity()
+				.getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(
+				R.id.menu_comp_pesquisar).getActionView();
+
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getActivity().getComponentName()));
+		searchView.setOnQueryTextListener(new OnQueryTextListener() {
+
+			@Override
+			public boolean onQueryTextSubmit(String newText) {
+				// this is your adapter that will be filtered
+
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String newText) {
+				// TODO Auto-generated method stub
+
+				if (TextUtils.isEmpty(newText)) {
+					expListAdapter.clearFilter();
+					ExpandeRecents();
+					IrHoje();
+					
+				
+				} else {
+					expListAdapter.getFilter().filter(newText);
+					for (int y = 0; y < groupList.size(); y++) {
+						expListView.expandGroup(y);
+					}
+				}
+
+				return false;
+			}
+		});
+
 	}
 
 	@Override
@@ -315,19 +341,70 @@ public class CompromissosFragment extends Fragment {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_empresa) {
-			
+
 			Intent n = new Intent(getActivity(), EmpresaActivity.class);
 			getActivity().startActivity(n);
 
 			return true;
-		}else{
+		} else if (id == R.id.action_login) {
 			Intent n = new Intent(getActivity(), LoginActivity.class);
 			getActivity().startActivity(n);
 
 			return true;
-			
+
+		}  else if(id == R.id.menu_comp_hoje){
+
+			IrHoje();
+			return true;
+
+		}else{
+			return true;
 		}
-		
+
+	}
+
+	private void IrHoje() {
+		// TODO Auto-generated method stub
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+		String formattedDate = df.format(c.getTime());
+	
+		for (int i = 0; i < groupList.size(); i++) {
+	
+			if (groupList.get(i).equals(formattedDate)) {
+				expListView.setSelectedGroup(i);
+			}
+		}
+	}
+
+	private void ExpandeRecents() {
+	
+		Calendar c = Calendar.getInstance();
+		Date dfim = null;
+	
+		for (int x = 0; x < groupList.size(); x++) {
+			String sfim = groupList.get(x);
+	
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",
+					Locale.getDefault());
+			try {
+	
+				dfim = sdf.parse(sfim);
+	
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Date dnow = c.getTime();
+			dnow.setDate(dnow.getDate() - 14);
+	
+			if (dfim.before(dnow)) {
+	
+			} else {
+				expListView.expandGroup(x);
+	
+			}
+		}
 	}
 
 }
