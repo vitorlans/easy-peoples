@@ -45,6 +45,10 @@
         <activity
             android:name=".DetalhesCompromissosActivity"
             android:label="@string/title_activity_detalhes_compromissos" >
+           <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" >
+            </meta-data>
         </activity>
         <activity
             android:name=".EmpresaActivity"

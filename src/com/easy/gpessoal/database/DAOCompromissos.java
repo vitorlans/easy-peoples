@@ -68,7 +68,7 @@ public class DAOCompromissos {
 	public Compromissos RecuperarCompromisso(Integer _id){
 		
 
-		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, null, null, null,
+		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, "_id="+_id, null, null,
 				null, "titulo ASC");
 
 		Compromissos c = new Compromissos();
