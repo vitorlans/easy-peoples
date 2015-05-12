@@ -243,12 +243,7 @@
     <string name="escolha_empresa">Escolha a empresa que deseja logar:</string>
 
     <string name="title_activity_detalhes_contatos">Detalhes</string>
-<<<<<<< HEAD
-    <string name="title_activity_detalhes_compromissos">DetalhesCompromissosActivity</string>
     <string name="title_activity_empresa">Empresa</string>
-=======
     <string name="title_activity_detalhes_compromissos">Detalhes do Compromisso</string>
-    <string name="title_activity_empresa">EmpresaActivity</string>
->>>>>>> e0ec973c3f5b6230f7798f719318ef79d331e9d5
 
 </resources>
