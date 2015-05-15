@@ -71,7 +71,7 @@ public class CompromissosAdapter extends BaseExpandableListAdapter implements
 		LayoutInflater inflater = context.getLayoutInflater();
 
 		if (convertView == null) {
-			convertView = inflater.inflate(R.layout.child_item, null);
+			convertView = inflater.inflate(R.layout.frg_compr_list_child_item, null);
 		}
 
 		TextView item = (TextView) convertView.findViewById(R.id.row_nome_tv);
@@ -108,9 +108,9 @@ public class CompromissosAdapter extends BaseExpandableListAdapter implements
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = infalInflater.inflate(R.layout.group_item, null);
+			convertView = infalInflater.inflate(R.layout.frg_compr_list_group_item, null);
 		}
-		TextView item = (TextView) convertView.findViewById(R.id.laptop);
+		TextView item = (TextView) convertView.findViewById(R.id.comp_topo);
 
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy",
 				Locale.getDefault());

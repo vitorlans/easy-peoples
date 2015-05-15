@@ -109,6 +109,8 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 		char[] splitChar = { ',', ';', ' ' };
 		participantes.setSplitChar(splitChar);
 		participantes.setTokenListener(this);
+		participantes.allowCollapse(false);
+		participantes.allowDuplicates(false);
 
 	}
 
@@ -243,7 +245,7 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 			c.setParticipantes(c1);
 
 			c.setStatus("A");
-
+//
 			DAOCompromissos mdC = new DAOCompromissos(
 					NovoCompromissoActivity.this);
 			mdC.CriarCompromisso(c);

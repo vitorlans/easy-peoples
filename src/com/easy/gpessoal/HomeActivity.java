@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easy.gpessoal.adapters.DrawerListAdapter;
+import com.easy.gpessoal.fragments.CalendarioFragment;
 import com.easy.gpessoal.fragments.CompromissosFragment;
 import com.easy.gpessoal.fragments.ContatosFragment;
 import com.easy.gpessoal.models.Drawer;
@@ -60,14 +61,15 @@ public class HomeActivity extends AppCompatActivity {
 		mLabel = getResources().getStringArray(R.array.options_menu);
 		mImagem = new int[]{R.drawable.ic_calendar_text, R.drawable.ic_account_multiple };
 		mDrawerItens = new ArrayList<Drawer>();
-		
-		for(int x = 0; x < mLabel.length; x++){
+		int y = 1;
+		for(int x = 0; x < mLabel.length-1; x++){
+			
 			
 			Drawer d = new Drawer();
 			d.setImagem(mImagem[x]);
-			d.setLabel(mLabel[x]);
+			d.setLabel(mLabel[y]);
 			mDrawerItens.add(d);
-			
+			y++;
 		}
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		
@@ -117,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		if (savedInstanceState == null) {
-			selectItem(0);
+			selectItem(1);
 		}
 
 	}
@@ -129,10 +131,7 @@ public class HomeActivity extends AppCompatActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			int x = position-1;
-			if(x == -1){}else{
-			selectItem(x);
-			}
+			selectItem(position);
 		}
 	}
 
@@ -140,6 +139,16 @@ public class HomeActivity extends AppCompatActivity {
 
 		switch (position) {
 		case 0:
+			Fragment fragment2 = new CalendarioFragment();
+			Bundle args2 = new Bundle();
+			fragment2.setArguments(args2);
+			FragmentManager fragmentManager2 = getSupportFragmentManager();
+			fragmentManager2.beginTransaction().replace(R.id.container, fragment2).commit();
+
+			break;
+
+		case 1:
+			
 			Fragment fragment = new CompromissosFragment();
 			Bundle args = new Bundle();
 			fragment.setArguments(args);
@@ -147,8 +156,9 @@ public class HomeActivity extends AppCompatActivity {
 			fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
 
 			break;
-
-		case 1:
+			
+			
+		case 2:
 			Fragment fragment1 = new ContatosFragment();
 			Bundle args1 = new Bundle();
 			fragment1.setArguments(args1);

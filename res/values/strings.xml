@@ -30,6 +30,7 @@
     <string name="action_example">Example action</string>
 
     <string-array name="options_menu">
+       	<item>Calendario</item>
         <item>Compromissos</item>
         <item>Contatos</item>
     </string-array>

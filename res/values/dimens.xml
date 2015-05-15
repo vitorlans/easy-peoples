@@ -15,4 +15,8 @@
     <dimen name="fab_elevation_lollipop">8dp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
 
+        <!-- Calendario Material. -->
+    
+        <integer name="mcv_default_tile_size">44</integer>
+    
 </resources>

@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.xml.sax.DTDHandler;
+
 import android.annotation.TargetApi;
 import android.app.SearchManager;
 import android.content.Context;
@@ -54,7 +56,7 @@ public class CompromissosFragment extends Fragment {
 	Map<String, List<Compromissos>> compromissosCollection;
 	List<Compromissos> lc;
 	CompromissosAdapter expListAdapter;
-
+	String dta = null;
 	public CompromissosFragment() {
 		// Empty constructor required for fragment subclasses
 	}
@@ -72,7 +74,13 @@ public class CompromissosFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_comp, container,
 				false);
-
+		
+		Bundle bundle = this.getArguments();
+		if (bundle != null) {
+		    dta = bundle.getString("data");
+		}
+		
+		
 		expListView = (ExpandableListView) rootView
 				.findViewById(R.id.comp_list);
 		setGroupIndicatorToRight();
@@ -126,7 +134,19 @@ public class CompromissosFragment extends Fragment {
 		});
 
 		ExpandeRecents();
-		IrHoje();
+		if(dta == null){
+			IrHoje();
+		}else{
+			
+	        for (int i = 0; i < groupList.size(); i++) {
+	            
+	            if(groupList.get(i).equals(dta)){
+	                expListView.expandGroup(i);
+	                expListView.setSelectedGroup(i);
+	            }
+	        }
+
+		}
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -319,8 +339,7 @@ public class CompromissosFragment extends Fragment {
 					expListAdapter.clearFilter();
 					ExpandeRecents();
 					IrHoje();
-					
-				
+
 				} else {
 					expListAdapter.getFilter().filter(newText);
 					for (int y = 0; y < groupList.size(); y++) {
@@ -352,12 +371,12 @@ public class CompromissosFragment extends Fragment {
 
 			return true;
 
-		}  else if(id == R.id.menu_comp_hoje){
+		} else if (id == R.id.menu_comp_hoje) {
 
 			IrHoje();
 			return true;
 
-		}else{
+		} else {
 			return true;
 		}
 
@@ -368,41 +387,77 @@ public class CompromissosFragment extends Fragment {
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
 		String formattedDate = df.format(c.getTime());
-	
+
+		Date hoje = null;
+		try {
+			hoje = df.parse(formattedDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Boolean val = false;
+
 		for (int i = 0; i < groupList.size(); i++) {
-	
-			if (groupList.get(i).equals(formattedDate)) {
+
+			Date data = null;
+			try {
+				data = df.parse(groupList.get(i));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			if (data.compareTo(hoje) == 0) {
 				expListView.setSelectedGroup(i);
+				val = true;
+			}else{
+
+			if (val != true) {
+
+				if (data.compareTo(hoje) == -1) {
+					expListView.setSelectedGroup(i);
+					val = true;
+					}
+
+				}
+			}
+			if (val != true) {
+
+				if (data.compareTo(hoje) == 1) {
+					expListView.setSelectedGroup(i);
+					val = true;
+				}
+
 			}
 		}
+
 	}
 
 	private void ExpandeRecents() {
-	
+
 		Calendar c = Calendar.getInstance();
 		Date dfim = null;
-	
+
 		for (int x = 0; x < groupList.size(); x++) {
 			String sfim = groupList.get(x);
-	
+
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",
 					Locale.getDefault());
 			try {
-	
+
 				dfim = sdf.parse(sfim);
-	
+
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Date dnow = c.getTime();
 			dnow.setDate(dnow.getDate() - 14);
-	
+
 			if (dfim.before(dnow)) {
-	
+
 			} else {
 				expListView.expandGroup(x);
-	
+
 			}
 		}
 	}

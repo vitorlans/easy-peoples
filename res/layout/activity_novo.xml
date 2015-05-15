@@ -28,7 +28,10 @@
                 android:id="@+id/novo_titulo_ed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10" >
+                android:ems="10"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLength="30" >
 
                 <requestFocus />
             </EditText>
@@ -45,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                android:lines="2" />
+                android:lines="2"
+                android:maxLength="50" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

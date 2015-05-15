@@ -90,7 +90,7 @@ public class ContatosAdapter extends BaseAdapter implements Filterable,
 		final View rootView;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			rootView = mInflater.inflate(R.layout.listview_item, parent, false);
+			rootView = mInflater.inflate(R.layout.frg_contat_listview_item, parent, false);
 			holder.friendProfileCircularContactView = (CircularContact) rootView
 					.findViewById(R.id.listview_item__friendPhotoImageView);
 			holder.friendProfileCircularContactView.getTextView().setTextColor(

@@ -16,6 +16,6 @@
         android:fastScrollEnabled="true"
         android:listSelector="@drawable/listview_selector"
         android:scrollingCache="false"
-        tools:listitem="@layout/listview_item"/>
+        tools:listitem="@layout/frg_contat_listview_item"/>
 
 </RelativeLayout>

@@ -66,7 +66,7 @@ public class ContatosFragment extends Fragment {
 		mLVusuarios.setOnScrollListener(mAdapter);
 		mLVusuarios.setTextFilterEnabled(true);
 		mLVusuarios.setPinnedHeaderView(LayoutInflater.from(getActivity()).inflate(
-				R.layout.pinned_header_listview_side_header, mLVusuarios, false));
+				R.layout.frg_contat_pinned_header_listview, mLVusuarios, false));
 		
         return rootView;
     }
