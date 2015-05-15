@@ -23,8 +23,9 @@
         android:gravity="center_vertical"
          />
     <Button
+        	style="?android:textAppearanceSmall"
             android:id="@+id/main_entrar_bt"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="30dp"

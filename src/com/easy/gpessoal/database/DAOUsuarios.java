@@ -14,10 +14,12 @@ public class DAOUsuarios {
 
 	private SQLiteDatabase bd;
 	private List<Usuarios> lu;
-	
-	private static final String NOME_TABELA = "tbusuarios";
-	private static final String[] NOME_COLUNAS = new String[]{"_id", "nome", "sobrenome", "apelido", "email", "senha", "dtnascimento", "endereco", "bairro", "cidade", "cep", "telefone", "status", "dtcriacao", "imagem" };
 
+	private static final String NOME_TABELA = "tbusuarios";
+	private static final String[] NOME_COLUNAS = new String[] { "_id", "nome",
+			"sobrenome", "apelido", "email", "senha", "dtnascimento",
+			"endereco", "bairro", "cidade", "cep", "telefone", "status",
+			"dtcriacao", "imagem" };
 
 	public DAOUsuarios(Context context) {
 
@@ -25,19 +27,19 @@ public class DAOUsuarios {
 		bd = auxBd.getWritableDatabase();
 
 	}
-	
-	public List<Usuarios> RecuperarTodos(){
-		
-		
+
+	public List<Usuarios> RecuperarTodos() {
+
 		lu = new ArrayList<>();
-				
-		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, null, null, null, null, "nome ASC");
-		
-		if(cursor.getCount() > 0){
+
+		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, null, null, null,
+				null, "nome ASC");
+
+		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();
-			
-			do{
-				
+
+			do {
+
 				Usuarios u = new Usuarios();
 				u.setId(cursor.getInt(0));
 				u.setNome(cursor.getString(1));
@@ -55,60 +57,55 @@ public class DAOUsuarios {
 				u.setDtCriacao(cursor.getString(13));
 				u.setImagem(cursor.getString(14));
 
-
 				lu.add(u);
-				
-			}while(cursor.moveToNext());
+
+			} while (cursor.moveToNext());
 		}
 		cursor.close();
-		
-		
+
 		return lu;
-		
+
 	}
-	
-	public List<Usuarios> RecuperarSimplesTodos(){
-		
-		
+
+	public List<Usuarios> RecuperarSimplesTodos() {
+
 		lu = new ArrayList<>();
-		
-		
-		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, null, null, null, null, "nome ASC");
-		
-		if(cursor.getCount() > 0){
+
+		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, null, null, null,
+				null, "nome ASC");
+
+		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();
-			
-			do{
-				
+
+			do {
+
 				Usuarios u = new Usuarios();
 				u.setId(cursor.getInt(0));
-				u.setNome(cursor.getString(1) +" "+ cursor.getString(2));
+				u.setNome(cursor.getString(1) + " " + cursor.getString(2));
 				u.setEmail(cursor.getString(4));
 				u.setImagem(cursor.getString(14));
 
-
 				lu.add(u);
-				
-			}while(cursor.moveToNext());
+
+			} while (cursor.moveToNext());
 		}
 		cursor.close();
-		
+
 		return lu;
-		
+
 	}
-	
 
-	public Usuarios RecuperarUsuario(Integer _id){
-		
+	public Usuarios RecuperarUsuario(Integer _id) {
 
-		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, "_id="+_id, null, null, null, "nome ASC");
+		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, "_id=" + _id, null,
+				null, null, "nome ASC");
 		Usuarios u = new Usuarios();
 
-		if(cursor.getCount()>0){
+		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();
-			
-			do{
-				
+
+			do {
+
 				u.setId(cursor.getInt(0));
 				u.setNome(cursor.getString(1));
 				u.setSobrenome(cursor.getString(2));
@@ -124,12 +121,21 @@ public class DAOUsuarios {
 				u.setStatus(cursor.getString(12));
 				u.setDtCriacao(cursor.getString(13));
 				u.setImagem(cursor.getString(14));
-			}while(cursor.moveToNext());
+			} while (cursor.moveToNext());
 		}
 		cursor.close();
 
 		return u;
 	}
-	
-	
+
+	public Boolean RealizarLogin(String email, String senha) {
+		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, "email=" + email
+				+ " senha=" + senha, null, null, null, "nome ASC");
+
+		if (cursor.getCount() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
