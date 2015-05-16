@@ -129,8 +129,7 @@ public class DAOUsuarios {
 	}
 
 	public Boolean RealizarLogin(String email, String senha) {
-		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, "email=" + email
-				+ " senha=" + senha, null, null, null, "nome ASC");
+		Cursor cursor = bd.query(NOME_TABELA, NOME_COLUNAS, "email=? and senha=?", new String[]{email,senha}, null, null, "nome ASC");
 
 		if (cursor.getCount() > 0) {
 			return true;
