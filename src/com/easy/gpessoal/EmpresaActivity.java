@@ -7,12 +7,16 @@ import com.easy.gpessoal.database.DAOEmpresa;
 import com.easy.gpessoal.models.Empresas;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 public class EmpresaActivity extends AppCompatActivity{
@@ -37,6 +41,18 @@ public class EmpresaActivity extends AppCompatActivity{
 		}
 		ArrayAdapter<String> spAdapter = new ArrayAdapter<String>(EmpresaActivity.this, android.R.layout.simple_spinner_item, sEmp);
 		spEmpresa.setAdapter(spAdapter);
+		
+		
+		final Button botaoEmpresa = (Button)findViewById(R.id.main_entrar_bt);
+		botaoEmpresa.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(EmpresaActivity.this,HomeActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override
