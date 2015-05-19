@@ -1,9 +1,17 @@
 package com.easy.gpessoal;
 
+
+import java.util.Date;
+import java.util.Locale;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import com.easy.gpessoal.database.DAOCompromissos;
 import com.easy.gpessoal.models.Compromissos;
+import com.easy.gpessoal.utils.DateTime;
 
 import android.content.Intent;
+import android.net.ParseException;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +26,8 @@ public class DetalhesCompromissosActivity extends AppCompatActivity {
 	private TextView txTitulo, txDataInicio, txDataTermino, txDescricao, txParticipantes;
 	private Compromissos comp;
 	private DAOCompromissos dComp;
+	private DateFormat dtf = DateFormat.getDateInstance(DateFormat.LONG, new Locale("pt", "BR"));
+	private Date dtInicio, dtTermino;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +46,6 @@ public class DetalhesCompromissosActivity extends AppCompatActivity {
 		
 	    txTitulo = (TextView)findViewById(R.id.dcomp_titulo_tv);
 	    txDataInicio = (TextView)findViewById(R.id.dt_inicio);
-	    txDataTermino = (TextView)findViewById(R.id.dt_termino);
 	    txDescricao = (TextView)findViewById(R.id.descricao_comp);
 	    txParticipantes = (TextView)findViewById(R.id.relac_comp);
 	}
@@ -46,10 +55,25 @@ public class DetalhesCompromissosActivity extends AppCompatActivity {
 		super.onStart();
 		
 		if(comp != null)
-		{
+		{	
+			SimpleDateFormat dtParse = new SimpleDateFormat();
+			
+		    try 
+		    {
+		    	dtInicio = dtParse.parse(comp.getDataInicio());
+		    	dtTermino = dtParse.parse(comp.getDataFim());
+			} 
+		    catch (java.text.ParseException e) {
+				e.printStackTrace();
+			}
+			
 			txTitulo.setText(comp.getTitulo());
-			txDataInicio.setText(comp.getDataInicio());
-			txDataTermino.setText(comp.getDataFim());
+			
+			if(comp.getDataInicio() != comp.getDataFim())
+				txDataInicio.setText(dtf.format(dtInicio).toString()+" - "+dtf.format(dtTermino).toString() );
+			else
+				txDataInicio.setText(dtf.format(dtInicio).toString());
+			
 			txDescricao.setText(comp.getDescricao());
 			txParticipantes.setText(comp.getParticipantes());
 		}

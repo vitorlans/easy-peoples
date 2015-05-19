@@ -1,16 +1,22 @@
 package com.easy.gpessoal;
 
+import java.util.UUID;
+
 import com.easy.gpessoal.database.DAOUsuarios;
 import com.easy.gpessoal.models.Usuarios;
 
 import android.R.integer;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +50,23 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		tvDNasc = (TextView) findViewById(R.id.detalhes_dtnasc_tv);
 		tvEndereço = (TextView) findViewById(R.id.detalhes_endereco_tv);
 		tvApelido = (TextView) findViewById(R.id.detalhes_apelido_tv);
+		
+
+		tvTelefone.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				String te = tvTelefone.getText().toString();
+				
+				Uri ur = Uri.parse("tel:"+te);
+				Intent intTel = new Intent(Intent.ACTION_DIAL, ur);
+				
+				startActivity(intTel);
+				
+			}
+		});
 
 	}
 
