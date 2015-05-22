@@ -7,7 +7,7 @@
      <item
         android:id="@+id/menu_comp_hoje"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_calendar_today"
+        android:icon="@drawable/ic_calendar_today_white_36dp"
         android:title="Hoje"
         app:showAsAction="always"
         />

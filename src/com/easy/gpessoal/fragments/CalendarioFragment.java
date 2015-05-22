@@ -14,12 +14,17 @@ import java.util.concurrent.Executors;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
@@ -65,47 +70,87 @@ public class CalendarioFragment extends Fragment implements OnDateChangedListene
 		calendar.setOnDateChangedListener(this);
 		c.set(c.get(Calendar.YEAR), Calendar.DECEMBER, 31);
 		calendar.setMaximumDate(c.getTime());
-        
         		
         new Eventos().executeOnExecutor(Executors.newSingleThreadExecutor());
        
         
         return rootView;
 	}
- 
+
 	@Override
 	
-	public void onDateChanged(MaterialCalendarView widget, final CalendarDay date, DayView dayView) {
+	public void onDateChanged(final MaterialCalendarView widget, final CalendarDay date, DayView dayView) {
 		// TODO Auto-generated method stub
-		dayView.setOnLongClickListener(new OnLongClickListener() {
-			
-			@Override
-			public boolean onLongClick(View v) {
-				Toast.makeText(getActivity(), date.getDate().toString(), Toast.LENGTH_SHORT).show();
-				Fragment fragment = new CompromissosFragment();
-				Bundle args = new Bundle();
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-				String now = sdf.format(date.getDate());
-				args.putString("data", now);
-				fragment.setArguments(args);
-				
-				FragmentManager fragmentManager = getFragmentManager();
-				fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
-				
-				return false;
-			}
+		
+		dayView.setOnClickListener(new OnClickListener() {
+			int i = 0;
+
+		    @Override
+		    public void onClick(View v) {
+		        // TODO Auto-generated method stub
+		        i++;
+		        Handler handler = new Handler();
+		        Runnable r = new Runnable() {
+
+		            @Override
+		            public void run() {
+		                i = 0;
+		            }
+		        };
+
+		        if (i == 1) {
+		            //Single click
+		        	widget.setSelectedDate(date);
+		            handler.postDelayed(r, 250);
+		        } else if (i == 2) {
+		            //Double click
+		            i = 0;
+		            Toast.makeText(getActivity(), date.getDate().toString(), Toast.LENGTH_SHORT).show();
+					Fragment fragment = new CompromissosFragment();
+					Bundle args = new Bundle();
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+					String now = sdf.format(date.getDate());
+					args.putString("data", now);
+					fragment.setArguments(args);
+					
+					FragmentManager fragmentManager = getFragmentManager();
+					fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+					
+		        }
+
+
+		    }
 		});
+			
+
 	}
 
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		super.onCreateOptionsMenu(menu, menuInflater);
+		menuInflater.inflate(R.menu.calendario, menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		
+		int id = item.getItemId();
+		if(id == R.id.menu_calen_hoje){
+			Calendar c = Calendar.getInstance();
+
+			calendar.setSelectedDate(c.getTime());
+			
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	private class Eventos extends AsyncTask<Void, Void, List<CalendarDay>>{
 
 		@Override
 		protected List<CalendarDay> doInBackground(Void... voids) {
-			 try {
-	                Thread.sleep(2000);
-	            } catch (InterruptedException e) {
-	                e.printStackTrace();
-	            }
+		
 
 			List<CalendarDay> mCalendarList = new ArrayList<>();
 

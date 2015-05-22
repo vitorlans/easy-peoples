@@ -57,6 +57,7 @@ public class CompromissosFragment extends Fragment {
 	List<Compromissos> lc;
 	CompromissosAdapter expListAdapter;
 	String dta = null;
+
 	public CompromissosFragment() {
 		// Empty constructor required for fragment subclasses
 	}
@@ -74,13 +75,12 @@ public class CompromissosFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_comp, container,
 				false);
-		
+
 		Bundle bundle = this.getArguments();
 		if (bundle != null) {
-		    dta = bundle.getString("data");
+			dta = bundle.getString("data");
 		}
-		
-		
+
 		expListView = (ExpandableListView) rootView
 				.findViewById(R.id.comp_list);
 		setGroupIndicatorToRight();
@@ -134,17 +134,17 @@ public class CompromissosFragment extends Fragment {
 		});
 
 		ExpandeRecents();
-		if(dta == null){
+		if (dta == null) {
 			IrHoje();
-		}else{
-			
-	        for (int i = 0; i < groupList.size(); i++) {
-	            
-	            if(groupList.get(i).equals(dta)){
-	                expListView.expandGroup(i);
-	                expListView.setSelectedGroup(i);
-	            }
-	        }
+		} else {
+
+			for (int i = 0; i < groupList.size(); i++) {
+
+				if (groupList.get(i).equals(dta)) {
+					expListView.expandGroup(i);
+					expListView.setSelectedGroup(i);
+				}
+			}
 
 		}
 	}
@@ -394,8 +394,11 @@ public class CompromissosFragment extends Fragment {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		Boolean val = false;
-
+		Boolean encontro = false;
+		long menor = hoje.getTime();
+		int pos = 0;
+		
+		
 		for (int i = 0; i < groupList.size(); i++) {
 
 			Date data = null;
@@ -406,30 +409,25 @@ public class CompromissosFragment extends Fragment {
 				e.printStackTrace();
 			}
 
-			if (data.compareTo(hoje) == 0) {
-				expListView.setSelectedGroup(i);
-				val = true;
+		
+			if(data.compareTo(hoje) == 0){
+				pos = i;
+				encontro = true;
 			}else{
-
-			if (val != true) {
-
-				if (data.compareTo(hoje) == -1) {
-					expListView.setSelectedGroup(i);
-					val = true;
-					}
-
+			
+			if(encontro != true){
+			long sub = hoje.getTime() - data.getTime();
+				if(sub < menor ){
+					menor = sub;
+					pos = i;
 				}
 			}
-			if (val != true) {
-
-				if (data.compareTo(hoje) == 1) {
-					expListView.setSelectedGroup(i);
-					val = true;
-				}
-
 			}
 		}
-
+		
+		expListView.setSelectedGroup(pos);
+		expListView.expandGroup(pos);
+		
 	}
 
 	private void ExpandeRecents() {
@@ -457,7 +455,6 @@ public class CompromissosFragment extends Fragment {
 
 			} else {
 				expListView.expandGroup(x);
-
 			}
 		}
 	}

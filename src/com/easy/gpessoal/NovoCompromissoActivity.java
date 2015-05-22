@@ -22,6 +22,7 @@ import com.tokenautocomplete.TokenCompleteTextView.TokenListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -232,25 +233,49 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 
 		if (id == R.id.novo_action_salvar) {
 
-			Compromissos c = new Compromissos();
-			c.setTitulo(titulo.getText().toString());
-			c.setDescricao(descricao.getText().toString());
-			c.setDataInicio(dataInicio.getText().toString());
-			c.setDataFim(dataFim.getText().toString());
-		
-			String c1="";
-			for(String u : addlu){
-				c1 += u + "\n";
-			}
-			c.setParticipantes(c1);
+			if (TextUtils.isEmpty(titulo.getText().toString()) == true
+					&& TextUtils.isEmpty(descricao.getText().toString()) == true
+					&& addlu.size() == 0) {
+				
+				Toast.makeText(NovoCompromissoActivity.this, "Campos Vazios",
+						Toast.LENGTH_SHORT).show();
+				
+			} else {
+				
+				if (TextUtils.isEmpty(titulo.getText().toString()) == true){
+					Toast.makeText(NovoCompromissoActivity.this, "Titulo Vazio",
+							Toast.LENGTH_SHORT).show();
+				}
+				if (TextUtils.isEmpty(descricao.getText().toString()) == true){
+				Toast.makeText(NovoCompromissoActivity.this, "Descrição Vazia",
+						Toast.LENGTH_SHORT).show();
+				}
+				
+				if(TextUtils.isEmpty(descricao.getText().toString()) != true && TextUtils.isEmpty(titulo.getText().toString()) != true){
+					{
+				Compromissos c = new Compromissos();
+				c.setTitulo(titulo.getText().toString());
+				c.setDescricao(descricao.getText().toString());
+				c.setDataInicio(dataInicio.getText().toString());
+				c.setDataFim(dataFim.getText().toString());
 
-			c.setStatus("A");
-//
-			DAOCompromissos mdC = new DAOCompromissos(
-					NovoCompromissoActivity.this);
-			mdC.CriarCompromisso(c);
+				String c1 = "";
+				for (String u : addlu) {
+					c1 += u + "\n";
+				}
+				c.setParticipantes(c1);
 
-			finish();
+				c.setStatus("A");
+
+				DAOCompromissos mdC = new DAOCompromissos(
+						NovoCompromissoActivity.this);
+				mdC.CriarCompromisso(c);
+				}
+				
+				Toast.makeText(NovoCompromissoActivity.this, "Novo Compromisso Adicionado",
+						Toast.LENGTH_SHORT).show();
+				finish();
+			}}
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -260,9 +285,9 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 	public void onTokenAdded(Object token) {
 		// TODO Auto-generated method stub
 		Usuarios u = (Usuarios) token;
-		
+
 		addlu.add(u.getEmail());
-	
+
 	}
 
 	@Override
@@ -271,6 +296,6 @@ public class NovoCompromissoActivity extends AppCompatActivity implements
 		Usuarios u = (Usuarios) token;
 
 		addlu.remove(u.getEmail());
-		
+
 	}
 }
