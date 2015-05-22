@@ -9,11 +9,6 @@
         android:id="@+id/app_toolbar"
         layout="@layout/app_toolbar" />
     
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/escolha_empresa" />
-    
     <Spinner
         android:id="@+id/SpinnerEmpresa"
         android:layout_width="200dp"
