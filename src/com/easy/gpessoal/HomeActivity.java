@@ -9,7 +9,6 @@ import java.util.Locale;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -21,8 +20,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.easy.gpessoal.adapters.DrawerListAdapter;
 import com.easy.gpessoal.fragments.CalendarioFragment;
 import com.easy.gpessoal.fragments.CompromissosFragment;
@@ -199,11 +196,11 @@ public class HomeActivity extends AppCompatActivity {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	private boolean doubleBackToExitPressedOnce = false;
+	//private boolean doubleBackToExitPressedOnce = false;
 
-	@Override
-	public void onBackPressed() {
-	    if (doubleBackToExitPressedOnce) {
+	
+	   
+		/*if (doubleBackToExitPressedOnce) {
 	        super.onBackPressed();
 	        return;
 	    }
@@ -218,7 +215,8 @@ public class HomeActivity extends AppCompatActivity {
 	            doubleBackToExitPressedOnce=false;                       
 	        }
 	    }, 2000);
-	} 
+	    */
+	
 	
 	public static int dpToPx(int dp)
 	{

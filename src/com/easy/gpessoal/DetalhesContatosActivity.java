@@ -1,23 +1,17 @@
 package com.easy.gpessoal;
 
-import java.util.UUID;
-
 import com.easy.gpessoal.database.DAOUsuarios;
 import com.easy.gpessoal.models.Usuarios;
 
-import android.R.integer;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewDebug.IntToString;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +63,7 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		tvEmail.setText(u.getEmail());
 		tvTelefone.setText(u.getTelefone());
 		tvDNasc.setText(u.getDtNascimento());
-		tvEndereco.setText(u.getEndereco()+ u.getBairro() + u.getCidade() + u.getCep());
+		tvEndereco.setText(u.getEndereco()+ " "+ u.getBairro() +" "+ u.getCidade() +" "+ u.getCep());
 		tvApelido.setText(u.getApelido());
 		
 		// Alterações realizadas para chamadas de Aplicativos externos;
@@ -138,9 +132,9 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 				{
 					Uri sMaps = Uri.parse("https://www.google.com.br/maps/place/"+endereco.replace(' ', '+')+",+"+cidade.replace(' ', '+')+",+Brasil");
 					
-					Intent intendMaps = new Intent(Intent.ACTION_VIEW, sMaps);
+					Intent intentMaps = new Intent(Intent.ACTION_VIEW, sMaps);
 					
-					startActivity(intendMaps);
+					startActivity(intentMaps);
 				}
 				
 				
