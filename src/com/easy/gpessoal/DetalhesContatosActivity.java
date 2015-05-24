@@ -29,6 +29,7 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 	private TextView tvDNasc;
 	private TextView tvEndereço;
 	private TextView tvApelido;
+	private Usuarios u;
 	Integer _id;
 
 	@Override
@@ -67,6 +68,39 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 				
 			}
 		});
+		
+		tvEndereço.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				String endereco, cidade;
+				
+				endereco = tvEndereço.getText().toString();
+				cidade = u.getCidade().toString();
+				
+				try
+				{					
+					Uri mapteste = Uri.parse("google.navigation:q="+endereco.replace(' ', '+')+",+"+cidade.replace(' ', '+')+"+Brasil");
+					
+					Intent intentEnd = new Intent(Intent.ACTION_VIEW, mapteste);
+					intentEnd.setPackage("com.google.android.apps.maps");
+					
+					startActivity(intentEnd);
+					
+				}catch(Exception e)
+				{
+					Uri sMaps = Uri.parse("https://www.google.com.br/maps/place/"+endereco.replace(' ', '+')+",+"+cidade.replace(' ', '+')+"+Brasil");
+					
+					Intent intendMaps = new Intent(Intent.ACTION_VIEW, sMaps);
+					
+					startActivity(intendMaps);
+				}
+				
+				
+			}
+		});
 
 	}
 
@@ -76,7 +110,7 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		super.onStart();
 		
 		DAOUsuarios dUs = new DAOUsuarios(DetalhesContatosActivity.this);
-		Usuarios u = dUs.RecuperarUsuario(_id);
+		u = dUs.RecuperarUsuario(_id);
 		getSupportActionBar().setTitle(u.getNome());
 		ivImagem.setBackgroundColor(Color.parseColor(u.getImagem()));
 		tvNome.setText(u.getNome() + " " + u.getSobrenome());

@@ -26,7 +26,6 @@ public class DetalhesCompromissosActivity extends AppCompatActivity {
 	private TextView txTitulo, txDataInicio, txDataTermino, txDescricao, txParticipantes;
 	private Compromissos comp;
 	private DAOCompromissos dComp;
-	private DateFormat dtf = DateFormat.getDateInstance(DateFormat.LONG, new Locale("pt", "BR"));
 	private Date dtInicio, dtTermino;
 	
 	@Override
@@ -57,6 +56,7 @@ public class DetalhesCompromissosActivity extends AppCompatActivity {
 		if(comp != null)
 		{	
 			SimpleDateFormat dtParse = new SimpleDateFormat();
+		    SimpleDateFormat teste = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy HH:mm", Locale.getDefault());
 			
 		    try 
 		    {
@@ -70,9 +70,9 @@ public class DetalhesCompromissosActivity extends AppCompatActivity {
 			txTitulo.setText(comp.getTitulo());
 			
 			if(comp.getDataInicio() != comp.getDataFim())
-				txDataInicio.setText(dtf.format(dtInicio).toString()+" - "+dtf.format(dtTermino).toString() );
+				txDataInicio.setText(teste.format(dtInicio).toString()+"\n"+teste.format(dtTermino).toString() );
 			else
-				txDataInicio.setText(dtf.format(dtInicio).toString());
+				txDataInicio.setText(teste.format(dtInicio).toString());
 			
 			txDescricao.setText(comp.getDescricao());
 			txParticipantes.setText(comp.getParticipantes());
