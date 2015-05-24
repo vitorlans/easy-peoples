@@ -16,9 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewDebug.IntToString;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetalhesContatosActivity extends AppCompatActivity {
 
@@ -27,7 +29,7 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 	private TextView tvEmail;
 	private TextView tvTelefone;
 	private TextView tvDNasc;
-	private TextView tvEndereço;
+	private TextView tvEndereco;
 	private TextView tvApelido;
 	private Usuarios u;
 	Integer _id;
@@ -49,58 +51,8 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		tvEmail = (TextView) findViewById(R.id.detalhes_email_tv);
 		tvTelefone = (TextView) findViewById(R.id.detalhes_telefone_tv);
 		tvDNasc = (TextView) findViewById(R.id.detalhes_dtnasc_tv);
-		tvEndereço = (TextView) findViewById(R.id.detalhes_endereco_tv);
+		tvEndereco = (TextView) findViewById(R.id.detalhes_endereco_tv);
 		tvApelido = (TextView) findViewById(R.id.detalhes_apelido_tv);
-		
-
-		tvTelefone.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				String te = tvTelefone.getText().toString();
-				
-				Uri ur = Uri.parse("tel:"+te);
-				Intent intTel = new Intent(Intent.ACTION_DIAL, ur);
-				
-				startActivity(intTel);
-				
-			}
-		});
-		
-		tvEndereço.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				String endereco, cidade;
-				
-				endereco = tvEndereço.getText().toString();
-				cidade = u.getCidade().toString();
-				
-				try
-				{					
-					Uri mapteste = Uri.parse("google.navigation:q="+endereco.replace(' ', '+')+",+"+cidade.replace(' ', '+')+"+Brasil");
-					
-					Intent intentEnd = new Intent(Intent.ACTION_VIEW, mapteste);
-					intentEnd.setPackage("com.google.android.apps.maps");
-					
-					startActivity(intentEnd);
-					
-				}catch(Exception e)
-				{
-					Uri sMaps = Uri.parse("https://www.google.com.br/maps/place/"+endereco.replace(' ', '+')+",+"+cidade.replace(' ', '+')+"+Brasil");
-					
-					Intent intendMaps = new Intent(Intent.ACTION_VIEW, sMaps);
-					
-					startActivity(intendMaps);
-				}
-				
-				
-			}
-		});
 
 	}
 
@@ -117,9 +69,84 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		tvEmail.setText(u.getEmail());
 		tvTelefone.setText(u.getTelefone());
 		tvDNasc.setText(u.getDtNascimento());
-		tvEndereço.setText(u.getEndereco()+ u.getBairro() + u.getCidade() + u.getCep());
+		tvEndereco.setText(u.getEndereco()+ u.getBairro() + u.getCidade() + u.getCep());
 		tvApelido.setText(u.getApelido());
-		}
+		
+		// Alterações realizadas para chamadas de Aplicativos externos;
+		
+		tvEmail.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				try
+				{
+					Intent iEmail = new Intent(Intent.ACTION_SENDTO);
+					
+					iEmail.setType("pain/text");
+					iEmail.setData(Uri.parse("mailto:"+u.getEmail().toString().trim()+""));
+					//iEmail.putExtra(Intent.EXTRA_SUBJECT, "Email Easy");
+					
+					startActivity(iEmail);
+				}catch(Exception e)
+				{
+					int tempo =  Toast.LENGTH_SHORT;
+					Toast tMsg = Toast.makeText(getApplicationContext(), "Não foi possível abrir o aplicativo de Email.", tempo);
+					tMsg.show();
+				}
+			}
+		});
+		
+		tvTelefone.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				String te = tvTelefone.getText().toString();
+				
+				Uri ur = Uri.parse("tel:"+te);
+				Intent intTel = new Intent(Intent.ACTION_DIAL, ur);
+				
+				startActivity(intTel);
+				
+			}
+		});
+		
+		tvEndereco.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				String endereco, cidade;
+				
+				endereco = u.getEndereco().toString();
+				cidade = u.getCidade().toString();
+				
+				try
+				{					
+					Uri mapteste = Uri.parse("google.navigation:q="+endereco.replace(' ', '+')+",+"+cidade.replace(' ', '+')+",+Brasil");
+					
+					Intent intentEnd = new Intent(Intent.ACTION_VIEW, mapteste);
+					intentEnd.setPackage("com.google.android.apps.maps");
+					
+					startActivity(intentEnd);
+					
+				}catch(Exception e)
+				{
+					Uri sMaps = Uri.parse("https://www.google.com.br/maps/place/"+endereco.replace(' ', '+')+",+"+cidade.replace(' ', '+')+",+Brasil");
+					
+					Intent intendMaps = new Intent(Intent.ACTION_VIEW, sMaps);
+					
+					startActivity(intendMaps);
+				}
+				
+				
+			}
+		});
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -133,4 +160,5 @@ public class DetalhesContatosActivity extends AppCompatActivity {
 		
 		return super.onOptionsItemSelected(item);
 	}
+	
 }

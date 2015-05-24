@@ -59,11 +59,11 @@
                     android:id="@+id/dt_inicio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="30dp"
                     android:background="@android:color/white"
                     android:padding="5dp"
                     android:text="11/05/2015"
-                    android:textSize="13sp" />
+                    android:textSize="20sp" />
 
 
                 <TextView
@@ -75,18 +75,18 @@
                     android:drawableLeft="@drawable/ic_library_books"
                     android:gravity="bottom"
                     android:padding="5dp"
-                    android:text="Descrição"
+                    android:text=" Descrição"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/descricao_comp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="30dp"
                     android:background="@android:color/white"
                     android:padding="5dp"
                     android:text="Testando essa Budega"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -97,18 +97,18 @@
                     android:drawableLeft="@drawable/ic_account_switch"
                     android:gravity="bottom"
                     android:padding="5dp"
-                    android:text="Relacionados"
+                    android:text=" Relacionados"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/relac_comp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="30dp"
                     android:background="@android:color/white"
                     android:padding="5dp"
                     android:text="Debora Tucano"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
         </LinearLayout>
