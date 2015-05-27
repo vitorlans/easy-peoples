@@ -120,4 +120,26 @@ public class DAOCompromissos {
 		}
 
 	}
+
+	public Boolean EditarCompromisso(Compromissos c) {
+		// TODO Auto-generated method stub
+		
+		ContentValues update = new ContentValues();
+		update.put("titulo", c.getTitulo());
+		update.put("descricao", c.getDescricao());
+		update.put("dtinicio", c.getDataInicio());
+		update.put("dtfim", c.getDataFim());
+		update.put("participantes", c.getParticipantes());
+		update.put("status", c.getStatus());
+		update.put("iduser", c.getIdUser());
+		update.put("idempr", c.getIdEmpr());
+
+		try {
+			bd.update(NOME_TABELA, update, "_id=?", new String[]{c.getId().toString()});
+			return true;
+
+		} catch (SQLException e) {
+			return false;
+		}
+	}
 }

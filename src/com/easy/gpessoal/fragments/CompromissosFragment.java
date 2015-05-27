@@ -320,6 +320,7 @@ public class CompromissosFragment extends Fragment {
 		SearchView searchView = (SearchView) menu.findItem(
 				R.id.menu_comp_pesquisar).getActionView();
 
+        searchView.setSubmitButtonEnabled(true); 
 		searchView.setSearchableInfo(searchManager
 				.getSearchableInfo(getActivity().getComponentName()));
 		searchView.setOnQueryTextListener(new OnQueryTextListener() {
@@ -328,25 +329,23 @@ public class CompromissosFragment extends Fragment {
 			public boolean onQueryTextSubmit(String newText) {
 				// this is your adapter that will be filtered
 
+
+					expListAdapter.getFilter().filter(newText);
+					for (int y = 0; y < groupList.size(); y++) {
+						expListView.expandGroup(y);
+					}
+				
 				return false;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String newText) {
-				// TODO Auto-generated method stub
 
 				if (TextUtils.isEmpty(newText)) {
 					expListAdapter.clearFilter();
 					ExpandeRecents();
-					IrHoje();
-
-				} else {
-					expListAdapter.getFilter().filter(newText);
-					for (int y = 0; y < groupList.size(); y++) {
-						expListView.expandGroup(y);
-					}
-				}
-
+					IrHoje();}
+				
 				return false;
 			}
 		});
