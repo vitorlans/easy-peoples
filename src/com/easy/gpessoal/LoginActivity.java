@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,8 @@ public class LoginActivity extends AppCompatActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		Toolbar mToolbar = (Toolbar) findViewById(R.id.app_toolbar);
+		setSupportActionBar(mToolbar);
 		email = (EditText)findViewById(R.id.email);
 		senha = (EditText)findViewById(R.id.password);
 		final Button botaoLogar = (Button)findViewById(R.id.entrar_bt);

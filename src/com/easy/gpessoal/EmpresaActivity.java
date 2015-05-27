@@ -33,15 +33,15 @@ public class EmpresaActivity extends AppCompatActivity{
 		spEmpresa = (Spinner) findViewById(R.id.SpinnerEmpresa);
 		DAOEmpresa dEmp = new DAOEmpresa(EmpresaActivity.this);
 		List<Empresas> emp = dEmp.RecuperarTodos();
-		List<String> sEmp= new ArrayList();
+		List<String> sEmp= new ArrayList<String>();
 		
 		for(int i =0;i<emp.size();i++)
 		{
 			sEmp.add(emp.get(i).getNome());
 		}
 		ArrayAdapter<String> spAdapter = new ArrayAdapter<String>(EmpresaActivity.this, android.R.layout.simple_spinner_item, sEmp);
+		spAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spEmpresa.setAdapter(spAdapter);
-		
 		
 		final Button botaoEmpresa = (Button)findViewById(R.id.main_entrar_bt);
 		botaoEmpresa.setOnClickListener(new OnClickListener() {
